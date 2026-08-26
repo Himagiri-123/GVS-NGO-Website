@@ -1,0 +1,65 @@
+/* 3 Column Grid */
+.gallery-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* Pagination Styles (కొంచెం మోడ్రన్ గా మార్చాను) */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.pagination button {
+  background-color: #fff;
+  color: #1b5e20;
+  border: 2px solid #1b5e20;
+  padding: 8px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #1b5e20;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  border-color: #ccc;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: bold;
+  color: #555;
+}
+
+/* మొబైల్ రెస్పాన్సివ్ */
+@media screen and (max-width: 900px) {
+  .gallery-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .gallery-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .pagination {
+    gap: 10px;
+  }
+  .pagination button {
+    padding: 6px 15px;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,288 @@
+.contact-section {
+  padding: 80px 20px;
+  background-color: #ffffff;
+}
+
+.contact-header {
+  margin-bottom: 60px; 
+}
+
+.contact-header h2 {
+  text-align: center;
+  color: #1b5e20;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.title-underline {
+  height: 4px;
+  width: 60px;
+  background-color: #ffca28;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 50px;
+}
+
+/* Left Side Details */
+.contact-details {
+  flex: 1;
+}
+
+.org-name {
+  color: #1b5e20;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #e8f5e9;
+  padding-bottom: 10px;
+}
+
+/* అన్ని వివరాలకు అందమైన కార్డ్స్ డిజైన్ */
+.info-card {
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.info-card h4 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-card p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0 0 5px 28px; 
+  font-weight: 500;
+}
+
+/* వేర్వేరు రంగుల కార్డ్స్ */
+.address-block {
+  background-color: #f1f8e9;
+  border-left: 4px solid #4caf50;
+}
+.address-block h4 i { color: #4caf50; }
+
+.leadership-block {
+  background-color: #fff8e1;
+  border-left: 4px solid #ffb300;
+}
+.leadership-block h4 i { color: #ffb300; }
+
+.contacts-block {
+  background-color: #e3f2fd;
+  border-left: 4px solid #1e88e5;
+}
+.contacts-block h4 i { color: #1e88e5; }
+
+.email-block {
+  background-color: #ffebee;
+  border-left: 4px solid #e53935;
+}
+.email-block h4 i { color: #e53935; }
+
+.email-link {
+  color: #1b5e20;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.05rem;
+  margin-left: 28px;
+  display: block;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+  color: #d94f00;
+}
+
+/* Right Side Wrapper */
+.contact-form-wrapper {
+  flex: 1;
+}
+
+.contact-form-card {
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  border-top: 4px solid #d94f00;
+}
+
+.contact-form-card h3 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #1b5e20;
+  box-shadow: 0 0 5px rgba(27, 94, 32, 0.2);
+}
+
+.submit-btn {
+  background-color: #1b5e20;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.submit-btn:hover {
+  background-color: #0f3612;
+}
+
+/* 🔴 Google Maps Action Button Styles (ఫామ్ కింద సెట్ అవ్వడానికి మార్చాం) */
+.map-action-card {
+  background: #f1f8e9;
+  border: 2px dashed #81c784;
+  border-radius: 12px;
+  padding: 25px 20px;
+  margin-top: 25px; /* ఫామ్ నుండి కిందకి గ్యాప్ */
+  display: flex;
+  flex-direction: column; /* నిలువుగా రావడానికి */
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-color: #4caf50;
+}
+
+.map-icon-circle {
+  background: #e8f5e9;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #1b5e20;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.map-text-content h3 {
+  color: #1b5e20;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.map-text-content p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.map-open-btn {
+  background-color: #d94f00;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* బటన్ వెడల్పుగా రావడానికి */
+  box-sizing: border-box;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(217, 79, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.map-open-btn:hover {
+  background-color: #bf4500;
+  transform: scale(1.02);
+}
+
+/* Status Message Styles */
+.status-msg {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-msg.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.status-msg.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.submit-btn:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+  
+  .email-link {
+    font-size: 0.9rem !important;
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+  }
+}

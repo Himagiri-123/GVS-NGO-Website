@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- After live deploy, replace YOUR-DOMAIN-HERE with your actual domain -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://YOUR-DOMAIN-HERE.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN-HERE.com/our-team</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN-HERE.com/apply-kalam-dreams</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN-HERE.com/vvk-instructors</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN-HERE.com/govt-teachers</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN-HERE.com/caretakers</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN-HERE.com/privacy-policy</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN-HERE.com/terms-of-service</loc>
+    <priority>0.3</priority>
+  </url>
+</urlset>

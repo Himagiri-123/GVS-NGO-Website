@@ -1,0 +1,12 @@
+/* Success Story Manager Styles */
+
+.admin-data-table img {
+  border: 2px solid #4caf50;
+  padding: 2px;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.admin-data-table img:hover {
+  transform: scale(1.5);
+}

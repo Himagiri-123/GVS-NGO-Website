@@ -1,0 +1,270 @@
+/* NAVBAR BACKGROUND & POSITION */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #1b5e20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* LEFT SIDE */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.nav-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* RIGHT SIDE LINKS */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-right a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  /* 🔴 అలైన్‌మెంట్ కోసం */
+  display: flex; 
+  align-items: center;
+}
+
+.nav-right a:hover {
+  color: #ffca28; /* Golden hover color */
+}
+
+.lang-toggle {
+  color: #ffca28;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* =========================================
+   LOGIN BUTTON (Original Orange for Admin/Staff Pages)
+   ========================================= */
+.login-btn {
+  background-color: #d94f00 !important; 
+  color: #ffffff !important;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid #d94f00 !important;
+  box-shadow: 0 4px 6px rgba(217, 79, 0, 0.2);
+  display: inline-block;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: transparent !important;
+  color: #d94f00 !important;
+}
+
+/* =========================================
+   🔴 GLASSMORPHISM LOGIN BUTTON (Only for Navbar)
+   ========================================= */
+.navbar .login-btn {
+  background: rgba(255, 255, 255, 0.15) !important; 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff !important;
+  padding: 8px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex !important; 
+  align-items: center;
+  justify-content: center;
+  height: fit-content; 
+}
+
+.navbar .login-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important; 
+  color: #ffffff !important;
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+
+/* HAMBURGER MENU (Hidden on Desktop) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS (Your exact logic)
+   ========================================= */
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-right {
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    flex-direction: column;
+    background-color: #1b5e20;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    padding: 20px 0;
+    gap: 15px;
+  }
+
+  .nav-right.active {
+    left: 0;
+  }
+
+  .nav-right a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+  }
+  
+  .login-btn {
+    width: 50% !important; /* మొబైల్ లో బటన్ అందంగా ఉండటానికి */
+    margin: 0 auto;
+  }
+}
+
+/* మొబైల్ లో నావ్‌బార్ పేరు ఒకే లైన్ లో రావడానికి */
+@media (max-width: 480px) {
+  .nav-title {
+      font-size: 13px !important;    
+      white-space: nowrap !important; 
+      letter-spacing: -0.2px !important; 
+  }
+
+  .nav-logo {
+      height: 28px !important;      
+      width: 28px !important;
+  }
+
+  .nav-left {
+      gap: 5px !important;          
+  }
+
+  .navbar {
+      padding: 0 10px !important;    
+  }
+}
+
+/* 🔴 Google Translate Button Styles */
+.translate-btn-container {
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+}
+
+.goog-te-gadget-simple {
+  background-color: #f1f8e9 !important;
+  border: 1px solid #1b5e20 !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  color: #1b5e20 !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.goog-te-gadget-simple span {
+  color: #1b5e20 !important;
+}
+
+.goog-te-gadget-icon {
+  display: none !important; 
+}
+
+/* పైన వచ్చే గూగుల్ ట్రాన్స్‌లేట్ బార్ ని దాచడానికి */
+.goog-te-banner-frame {
+  display: none !important;
+}
+body {
+  top: 0px !important; 
+}
+
+/* గూగుల్ ట్రాన్స్‌లేట్ పైన వచ్చే డిస్టర్బింగ్ బార్‌ను పూర్తిగా మాయం చేయడానికి */
+iframe.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0px !important; 
+  position: static !important;
+}
+
+/* మౌస్ పెట్టినప్పుడు టెక్స్ట్ మీద వచ్చే పాపప్‌ను కూడా దాచడానికి */
+#goog-gt-tt, .goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 🔴 Mobile View Fix for Navbar Hamburger (3 lines) Menu */
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px !important; 
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: space-between !important; 
+  }
+
+  .nav-left {
+    max-width: 80% !important; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
+
+  .nav-title {
+    font-size: 1.1rem !important; 
+  }
+
+  .hamburger {
+    display: block !important;
+    margin-right: 5px !important; 
+    padding: 5px !important;
+  }
+}

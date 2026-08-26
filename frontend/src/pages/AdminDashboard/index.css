@@ -1,0 +1,286 @@
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f6f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 260px;
+  background-color: #1b5e20; /* GVS Green */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+  z-index: 1000; /* మొబైల్ లో పైన రావడానికి పెంచాం */
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-header {
+  padding: 25px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-header i {
+  font-size: 2rem;
+  color: #fdd835;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidebar-menu li {
+  padding: 15px 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+  border-left: 4px solid transparent;
+}
+
+.sidebar-menu li:hover {
+  background-color: rgba(255,255,255,0.05);
+  border-left-color: #81c784;
+}
+
+/* 🔴 Active State Fix */
+.sidebar-menu li.active {
+  background-color: rgba(255,255,255,0.15);
+  border-left-color: #fdd835;
+  color: #fdd835;
+  font-weight: bold;
+}
+
+.sidebar-menu li.active i {
+  color: #fdd835;
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.top-header {
+  background-color: white;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+.content-area {
+  padding: 30px;
+}
+
+/* Overview Tab Specific Styles */
+.overview-tab h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.overview-tab p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.stat-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+  border-top: 4px solid #1b5e20;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card i {
+  font-size: 3rem;
+  color: #d94f00;
+  margin-bottom: 15px;
+}
+
+.stat-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* --- మొబైల్ వ్యూ కోసం కొత్త స్టైల్స్ (Hamburger Menu & Stacking) --- */
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #1b5e20;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 990;
+}
+
+/* 🔴 ఫోన్ లో ఓపెన్ చేసినప్పుడు మాత్రమే ఇవి పనిచేస్తాయి */
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .hamburger-btn {
+    display: block; /* ఫోన్ లో ☰ బటన్ చూపిస్తుంది */
+  }
+
+  /* సైడ్ మెనూని దాచేస్తున్నాం (left: -300px) */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; 
+    height: 100vh;
+  }
+
+  /* బటన్ నొక్కినప్పుడు మెనూ బయటకి వస్తుంది */
+  .sidebar.open {
+    left: 0;
+  }
+
+  /* మెనూ ఓపెన్ అయినప్పుడు వెనకాల బ్లాక్ కలర్ షాడో */
+  .mobile-overlay.open {
+    display: block;
+  }
+
+  .sidebar-menu li {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  /* టాప్ హెడర్ ని ఫోన్ కి తగ్గట్టుగా సెట్ చేసాం */
+  .top-header {
+    padding: 15px;
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .header-title {
+    font-size: 1.1rem;
+  }
+
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .header-profile {
+    font-size: 0.9rem;
+  }
+
+  .logout-btn {
+    width: auto;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .content-area {
+    padding: 15px;
+  }
+
+  /* కార్డ్స్ అన్నీ ఒకదాని కింద ఒకటి నీట్ గా వరుసగా వస్తాయి */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

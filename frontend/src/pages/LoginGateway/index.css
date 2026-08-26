@@ -1,0 +1,68 @@
+.gateway-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  padding: 20px;
+}
+
+.gateway-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gateway-header h2 {
+  color: #1b5e20;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.gateway-header p {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.gateway-cards {
+  display: flex;
+  gap: 30px;
+  max-width: 800px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gateway-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  width: 300px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gateway-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border: 2px solid #1b5e20;
+}
+
+.card-icon {
+  font-size: 4rem;
+  color: #d94f00;
+  margin-bottom: 20px;
+}
+
+.gateway-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.gateway-card p {
+  color: #777;
+  font-size: 0.95rem;
+}

@@ -1,0 +1,155 @@
+.modern-footer {
+  background-color: #1b5e20;
+  color: #ffffff;
+  padding-top: 40px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; 
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 30px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 30px;
+}
+
+.footer-left {
+  flex: 1.5;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.footer-logo {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.footer-brand h3 {
+  font-size: 1.5rem;
+  color: #ffca28;
+}
+
+.footer-left p {
+  color: #e8f5e9;
+  font-size: 0.95rem;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.footer-links-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.footer-right {
+  text-align: left; 
+}
+
+.footer-right h4 {
+  color: #ffca28;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column; 
+  gap: 12px;
+}
+
+/* 🔴 ఇక్కడే మార్పు చేశాం! షేక్ అవ్వకుండా స్మూత్ గా జరుగుతుంది */
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block; 
+}
+
+.footer-links a:hover {
+  color: #ffca28;
+  transform: translateX(5px); 
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 15px;
+  background-color: #0f3612; 
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+.developer-credit {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #aaa; 
+}
+
+.developer-credit a {
+  color: #ffca28; 
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.developer-credit a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .footer-left {
+     text-align: left !important;
+  }
+
+  .footer-brand { 
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important; 
+  }
+  
+  .footer-brand h2, .footer-title, .footer-brand h3 {
+    white-space: nowrap !important; 
+    font-size: 1.15rem !important; 
+    margin: 0 0 0 10px !important; 
+  }
+
+  .footer-links-wrapper {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .footer-right {
+    text-align: left;
+    width: 100%;
+  }
+
+  .footer-links {
+    flex-direction: row; 
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}

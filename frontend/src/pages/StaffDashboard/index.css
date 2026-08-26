@@ -1,0 +1,411 @@
+.staff-dashboard-page {
+  min-height: 100vh;
+  background-color: #f4f7f6;
+}
+
+/* 🔴 లాగౌట్ బటన్ మరియు నావిగేషన్ బార్ ఫిక్స్ */
+.staff-nav {
+  background-color: #1b5e20;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between; /* పేరు ఎడమవైపు, బటన్ కుడివైపు ఉండటానికి */
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: #d32f2f;
+  color: white !important; /* మౌస్ పెట్టినప్పుడు టెక్స్ట్ మాయం కాకుండా */
+  border: none;
+  padding: 8px 20px;
+  width: auto; /* బటన్ స్క్రీన్ మొత్తం రాకుండా ఫిక్స్ */
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.1s ease, background 0.3s;
+}
+
+.logout-btn:hover { 
+  background: #b71c1c; 
+}
+
+.logout-btn:active { 
+  transform: scale(0.95); /* 🔴 క్లిక్ చేసినప్పుడు లోపలికి నొక్కుకున్న ఫీల్ (Press Effect) */
+}
+
+/* మిగతా కంటెంట్ */
+.dashboard-content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.welcome-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border-left: 5px solid #ffca28;
+}
+
+.welcome-card h2 { color: #1b5e20; margin-bottom: 10px; }
+.welcome-card p { color: #555; font-size: 1.1rem; }
+
+.report-form-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.report-form-card h3 {
+  color: #d94f00;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.form-row { display: flex; gap: 20px; }
+.input-group { flex: 1; margin-bottom: 20px; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #444; }
+.input-group input, .input-group textarea {
+  width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;
+}
+.input-group input:focus, .input-group textarea:focus { border-color: #1b5e20; outline: none; }
+
+/* 🔴 సబ్మిట్ బటన్ క్లిక్ ఎఫెక్ట్ */
+.submit-report-btn {
+  width: 100%; 
+  background: #1b5e20; 
+  color: white !important; 
+  padding: 15px; 
+  border: none; 
+  border-radius: 5px;
+  font-size: 1.1rem; 
+  font-weight: bold; 
+  cursor: pointer; 
+  transition: transform 0.1s ease, background 0.3s;
+}
+
+.submit-report-btn:hover { 
+  background: #144d18; 
+}
+
+.submit-report-btn:active { 
+  transform: scale(0.98); /* 🔴 నొక్కినప్పుడు ప్రెస్ అయ్యే ఎఫెక్ట్ */
+}
+
+.msg-box { padding: 15px; border-radius: 5px; margin-bottom: 20px; font-weight: bold; text-align: center; }
+.success-msg { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+.error-msg { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+
+
+/* 🔴 ట్యాబ్స్ స్టైల్స్ */
+.staff-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  flex: 1;
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 2px solid #c8e6c9;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn i { margin-right: 8px; }
+
+.tab-btn:hover {
+  background: #c8e6c9;
+}
+
+.tab-btn.active {
+  background: #1b5e20;
+  color: white;
+  border-color: #1b5e20;
+  box-shadow: 0 4px 10px rgba(27, 94, 32, 0.3);
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔴 స్టూడెంట్స్ మేనేజ్మెంట్ స్టైల్స్ */
+.students-manager-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.add-student-section {
+  padding: 25px;
+  background: #fafafa;
+  border-bottom: 2px solid #eee;
+}
+
+.add-student-section h3 {
+  color: #d94f00;
+  margin-bottom: 15px;
+}
+
+.add-student-form {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.add-student-form input {
+  flex: 1;
+  min-width: 150px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.add-student-form input:focus {
+  border-color: #1b5e20;
+  outline: none;
+}
+
+.add-btn {
+  background: #d94f00;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-btn:hover { background: #b84300; }
+.add-btn:active { transform: scale(0.95); }
+
+.students-list-section {
+  padding: 25px;
+}
+
+.students-list-section h3 {
+  color: #1b5e20;
+  margin-bottom: 20px;
+}
+
+.empty-msg {
+  text-align: center;
+  padding: 30px;
+  color: #888;
+  font-style: italic;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px dashed #ccc;
+}
+
+/* 🔴 స్టూడెంట్స్ టేబుల్ */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table th, .students-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.students-table th {
+  background-color: #f1f8e9;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+.students-table tr:hover {
+  background-color: #fafafa;
+}
+
+.delete-student-btn {
+  background: #ffebee;
+  color: #c62828;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-student-btn:hover {
+  background: #c62828;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .add-student-form { flex-direction: column; }
+  .add-student-form input, .add-btn { width: 100%; }
+}
+
+
+/* 🔴 CSS for New Student Fields (Gender & Academic Year) */
+.add-student-form .form-row {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+/* ఇన్‌పుట్ బాక్స్ లు మరియు సెలెక్ట్ బాక్స్ లు ఒకే సైజులో ఉండటానికి */
+.add-student-form .form-row > input,
+.add-student-form .form-row > select {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  background-color: white;
+  color: #333;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.add-student-form .form-row > input:focus,
+.add-student-form .form-row > select:focus {
+  border-color: #1b5e20;
+  box-shadow: 0 0 5px rgba(27, 94, 32, 0.2);
+}
+
+/* మొబైల్ వ్యూ లో ఒకదాని కింద ఒకటి రావడానికి */
+@media screen and (max-width: 768px) {
+  .add-student-form .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* 🔴 Perfect Mobile View Fix for Staff Navbar & Logout Button */
+@media screen and (max-width: 768px) {
+  .staff-nav {
+    padding: 15px 15px !important; 
+    min-height: 65px !important; /* 🔴 మీరు అడిగినట్లు గ్రీన్ బాక్స్ ఎత్తు (height) పెంచాం */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .nav-brand {
+    font-size: 1.1rem !important;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
+  
+  .logout-btn {
+    position: static !important; /* 🔴 బటన్ గాల్లోకి వెళ్లకుండా బాక్స్ లోపలే లాక్ చేశాం */
+    padding: 8px 15px !important;
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+    transform: none !important; /* బటన్ పైకి కిందకి జరగకుండా ఫిక్స్ */
+  }
+}
+
+
+
+/* 🔴 Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  background: white;
+  color: #1b5e20;
+  border: 1px solid #1b5e20;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+  background: #e8f5e9;
+}
+
+.page-btn.active {
+  background: #1b5e20;
+  color: white;
+  border-color: #1b5e20;
+  box-shadow: 0 4px 8px rgba(27, 94, 32, 0.3);
+}
+
+
+/* 🔴 Pagination Styles (Updated for High Visibility) */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 15px 0;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  background: white;
+  color: #1b5e20;
+  border: 2px solid #1b5e20; /* 🔴 కొంచెం మందంగా ఇచ్చాం */
+  padding: 8px 16px; /* 🔴 బటన్ సైజు కొంచెం పెంచాం */
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+  background: #e8f5e9;
+  transform: translateY(-2px);
+}
+
+/* 🔴 సూపర్ హైలైట్ (Active Page) */
+.page-btn.active {
+  background: #d94f00 !important; /* 🔴 ఆరెంజ్ కలర్ */
+  color: white !important;
+  border-color: #d94f00 !important;
+  box-shadow: 0 5px 12px rgba(217, 79, 0, 0.4) !important;
+  transform: scale(1.15) !important; /* 🔴 యాక్టివ్ లో ఉన్న బటన్ కొంచెం ముందుకు (పెద్దదిగా) వస్తుంది */
+  z-index: 2;
+}

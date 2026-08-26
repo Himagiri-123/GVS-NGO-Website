@@ -1,0 +1,69 @@
+.applications-manager {
+  width: 100%;
+}
+
+.manager-header h2 {
+  color: #1b5e20;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.manager-header p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.custom-table th {
+  background-color: #1b5e20;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.custom-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.custom-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.custom-table tr:hover {
+  background-color: #f1f8e9;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.status-badge.pending {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.status-badge.approved {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-badge.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

@@ -1,0 +1,90 @@
+.staff-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  padding: 20px;
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(27, 94, 32, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header i {
+  font-size: 4rem;
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+
+.login-header h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.error-msg {
+  background: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* 🔴 లాగిన్ బటన్ క్లిక్ ఎఫెక్ట్ & కలర్ ఫిక్స్ */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1b5e20;
+  color: white !important;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.1s ease, background 0.3s;
+}
+
+.login-btn:hover:not(:disabled) {
+  background: #144d18;
+}
+
+.login-btn:active:not(:disabled) {
+  transform: scale(0.96); /* 🔴 బటన్ ప్రెస్ ఎఫెక్ట్ */
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 25px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.back-home-btn {
+  background: none;
+  border: none;
+  color: #1b5e20;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-home-btn:hover {
+  text-decoration: underline;
+}

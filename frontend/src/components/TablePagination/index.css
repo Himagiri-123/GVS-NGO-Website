@@ -1,0 +1,52 @@
+.table-pagination-container {
+  width: 100%;
+}
+
+.number-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 8px;
+}
+
+.number-pagination button {
+  background-color: transparent;
+  color: #1b5e20;
+  border: 1px solid #1b5e20;
+  padding: 6px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Page number buttons rendered as circles */
+.number-pagination .num-btn {
+  padding: 6px 12px;
+  border-radius: 50%;
+}
+
+.number-pagination button:hover:not(:disabled) {
+  background-color: #e8f5e9;
+}
+
+/* Active page color */
+.number-pagination button.active-num {
+  background-color: #1b5e20;
+  color: #ffffff;
+  border-color: #1b5e20;
+}
+
+.number-pagination button:disabled {
+  border-color: #ccc;
+  color: #ccc;
+  cursor: not-allowed;
+}

@@ -1,0 +1,194 @@
+.hero-container {
+  width: 100%;
+  min-height: 100vh; /* height బదులు min-height వాడితే పర్ఫెక్ట్ గా వస్తుంది */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* కచ్చితంగా నిలువుగా మధ్యలోకి తెస్తుంది */
+  align-items: center; /* అడ్డంగా మధ్యలోకి తెస్తుంది */
+  padding-top: 70px; 
+  box-sizing: border-box;
+}
+
+.hero-content {
+  max-width: 900px;
+  text-align: center;
+  /* ఇక్కడ margin తీసేశాను, అదే కంటెంట్ ని పైకి నెడుతూ ఉండొచ్చు */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-heading {
+font-size: 3.5rem;
+letter-spacing: 2px;
+color: #ffca28; /* గోల్డెన్ కలర్ */
+text-transform: uppercase;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+margin-bottom: 20px;
+}
+
+.hero-caption {
+margin-bottom: 40px;
+width: 100%;
+padding: 0 15px; /* మొబైల్ లో అంచులకి తగలకుండా గ్యాప్ కోసం */
+}
+
+.hero-caption p {
+font-size: 1.2rem;
+line-height: 1.6;
+margin: 8px 0; /* రెండు లైన్ల మధ్య కొంచెం గ్యాప్ */
+color: #e8f5e9;
+}
+
+/* మోడ్రన్ బటన్ స్టైల్ */
+.btn-modern {
+background-color: transparent;
+color: #ffca28;
+padding: 12px 30px;
+border: 2px solid #ffca28;
+border-radius: 30px;
+font-size: 1.2rem;
+text-decoration: none;
+font-weight: bold;
+transition: all 0.3s ease;
+display: inline-block;
+}
+
+.btn-modern:hover {
+background-color: #ffca28;
+color: #1b5e20;
+transform: translateY(-3px);
+box-shadow: 0 5px 15px rgba(255, 202, 40, 0.4);
+}
+
+.btn-modern i {
+margin-left: 8px;
+animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+40% { transform: translateY(-5px); }
+60% { transform: translateY(-3px); }
+}
+
+/* మొబైల్ వ్యూ కోసం (Mobile View) అన్నీ ఒకేదగ్గర పెట్టాను */
+@media screen and (max-width: 768px) {
+.hero-heading {
+font-size: 2.2rem;
+}
+.hero-caption p {
+font-size: 1rem;
+line-height: 1.5;
+}
+}
+
+
+.hero-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 70px; 
+  box-sizing: border-box;
+}
+
+.hero-content {
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🔴 కొత్తగా పెట్టిన సంస్థ గుర్తింపు డిజైన్ */
+.registration-badge {
+  background-color: rgba(255, 202, 40, 0.15);
+  color: #ffca28;
+  padding: 8px 25px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 202, 40, 0.5);
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  display: inline-block;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.registration-badge i {
+  margin-right: 8px;
+}
+
+.hero-heading {
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  color: #ffca28;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+.hero-caption {
+  margin-bottom: 40px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.hero-caption p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 8px 0;
+  color: #e8f5e9;
+}
+
+.btn-modern {
+  background-color: transparent;
+  color: #ffca28;
+  padding: 12px 30px;
+  border: 2px solid #ffca28;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-modern:hover {
+  background-color: #ffca28;
+  color: #1b5e20;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 202, 40, 0.4);
+}
+
+.btn-modern i {
+  margin-left: 8px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+  60% { transform: translateY(-3px); }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-heading {
+    font-size: 2.2rem;
+  }
+  .hero-caption p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  /* 🔴 ఫోన్ లో చూసినప్పుడు గుర్తింపు అక్షరాలు సర్దుబాటు అవ్వడానికి */
+  .registration-badge {
+    font-size: 0.9rem;
+    padding: 6px 15px;
+    margin-bottom: 15px;
+  }
+}

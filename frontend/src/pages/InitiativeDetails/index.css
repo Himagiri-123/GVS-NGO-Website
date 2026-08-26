@@ -1,0 +1,402 @@
+.initiative-details-page {
+  padding: 40px 20px 80px 20px;
+  background-color: #f4f7f6;
+  min-height: 100vh;
+  position: relative;
+}
+
+.details-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  padding-top: 30px;
+}
+
+.header-icon {
+  background-color: #1b5e20;
+  color: #ffca28;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 5px 15px rgba(27, 94, 32, 0.3);
+}
+
+.details-header h1 {
+  color: #1b5e20;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.details-header p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 🔴 స్ప్లిట్ లేఅవుట్ (Education కోసం లెఫ్ట్ అండ్ రైట్) - Updated for Vertical Layout */
+.split-layout-container {
+  display: flex;
+  flex-direction: column; /* ఇది టేబుల్స్ ని పక్కపక్కన రాకుండా కిందకి పంపుతుంది */
+  gap: 30px;
+}
+
+.split-half {
+  width: 100%; /* స్క్రీన్ మొత్తం తీసుకుంటుంది, స్క్రోల్ అవసరం ఉండదు */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* టేబుల్ స్టైల్స్ */
+.table-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+.table-section h2, .gallery-section h2, .gallery-section h3 {
+  color: #d94f00;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ffca28;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th, .custom-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.custom-table th {
+  background-color: #1b5e20;
+  color: #ffffff;
+}
+
+.custom-table tr:hover {
+  background-color: #f1f8f1;
+}
+
+/* ఫోటో గ్యాలరీ స్టైల్స్ */
+.gallery-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.gallery-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer; /* 🔴 మౌస్ పెడితే హ్యాండ్ సింబల్ వస్తుంది */
+  transition: transform 0.3s;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(27, 94, 32, 0.3);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: #ffffff;
+  padding: 20px 15px 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.gallery-caption i {
+  color: #ffca28;
+  margin-right: 5px;
+}
+
+/* 🔴 ఫోటో పెద్దగా అవ్వడానికి పాప్-అప్ స్టైల్స్ (Lightbox Modal) */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  cursor: pointer; /* ఎక్కడ క్లిక్ చేసినా క్లోజ్ అవ్వడానికి */
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: zoomIn 0.3s ease;
+}
+
+.close-modal {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: #ffca28;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* మొబైల్ వ్యూ కోసం */
+@media screen and (max-width: 900px) {
+  .split-layout-container {
+    flex-direction: column; /* మొబైల్ లో పక్కపక్కన కాకుండా కిందకి వస్తాయి */
+  }
+}
+
+
+/* 🔴 Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.pagination button {
+  background-color: #1b5e20;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #ffca28;
+  color: #1b5e20;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: bold;
+  color: #555;
+}
+
+/* 🔴 3 Column Grid for Skill Development */
+.gallery-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* కచ్చితంగా ఒక అడ్డువరుసలో 3 ఫోటోలు వస్తాయి */
+  gap: 25px;
+}
+
+@media screen and (max-width: 900px) {
+  .gallery-grid-3 {
+    grid-template-columns: repeat(2, 1fr); /* టాబ్లెట్ లో 2 */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .gallery-grid-3 {
+    grid-template-columns: 1fr; /* మొబైల్ లో 1 */
+  }
+}
+
+
+/* కొత్త సెక్షన్ బ్లాక్ స్టైల్స్ */
+.section-block {
+  margin-bottom: 60px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.section-title {
+  color: #1b5e20;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #ffca28;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.table-section, .gallery-section {
+  margin-bottom: 30px;
+  box-shadow: none; /* లోపలి బాక్సులకు షాడో తీసేసాం, బయట బాక్సుకే ఉంటుంది */
+  padding: 0; /* లోపలి పాడింగ్ తీసేసాం */
+  background: transparent;
+}
+
+.table-section h3, .gallery-section h3 {
+  color: #d94f00;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+/* పాత CSS లో ఉన్న .gallery-grid-3 మరియు .pagination స్టైల్స్ ని తీసేయండి, 
+   ఎందుకంటే వాటిని ఇప్పుడు కొత్త GalleryPagination/index.css లో పెట్టాం. */
+
+   /* Numbers Pagination Styles (1, 2, 3...) */
+.number-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 8px;
+}
+
+.number-pagination button {
+  background-color: transparent;
+  color: #1b5e20;
+  border: 1px solid #1b5e20;
+  padding: 6px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.number-pagination .num-btn {
+  padding: 6px 12px;
+  border-radius: 50%; /* Number button round ga ravadaniki */
+}
+
+.number-pagination button:hover:not(:disabled) {
+  background-color: #e8f5e9;
+}
+
+/* Active Number (E page lo unte adi dark ga untundi) */
+.number-pagination button.active-num {
+  background-color: #1b5e20;
+  color: #ffffff;
+  border-color: #1b5e20;
+}
+
+.number-pagination button:disabled {
+  border-color: #ccc;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* 3 Column Grid (Gallery kosam) */
+.gallery-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 25px;
+}
+
+@media screen and (max-width: 900px) {
+  .gallery-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (max-width: 600px) {
+  .gallery-grid-3 { grid-template-columns: 1fr; }
+  .number-pagination { gap: 8px; flex-wrap: wrap; }
+}
+
+/* 🔴 Modern Glassmorphism Button Styles */
+.kalam-apply-glass-btn {
+  background: rgba(255, 112, 67, 0.15); /* లేత ఆరెంజ్ గ్లాస్ కలర్ */
+  color: #d94f00; 
+  padding: 10px 22px;
+  border: 1px solid rgba(255, 112, 67, 0.4);
+  border-radius: 30px; /* రౌండ్ గా స్టైలిష్ గా ఉండటానికి */
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  
+  /* అసలైన గ్లాస్ ఎఫెక్ట్ తెచ్చేది ఇక్కడే */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(217, 79, 0, 0.1);
+  
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kalam-apply-glass-btn:hover {
+  background: rgba(217, 79, 0, 0.9); /* హోవర్ చేస్తే డార్క్ అవుతుంది */
+  color: white;
+  border-color: rgba(217, 79, 0, 1);
+  box-shadow: 0 8px 25px rgba(217, 79, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.kalam-apply-glass-btn i {
+  font-size: 1.2rem;
+}
+
+/* మొబైల్ లో కూడా పర్ఫెక్ట్ గా కనిపించడానికి */
+@media (max-width: 600px) {
+  .kalam-apply-glass-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+}

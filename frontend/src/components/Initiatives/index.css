@@ -1,0 +1,165 @@
+.initiatives-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.initiatives-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.initiatives-header h2 {
+  font-size: 2.5rem;
+  color: #d94f00;
+  margin-bottom: 15px;
+}
+
+.initiatives-header p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.initiatives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.initiative-card {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.initiative-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: #d94f00;
+}
+
+.icon-wrapper {
+  font-size: 2.5rem;
+  color: #d94f00;
+  margin-bottom: 20px;
+}
+
+.initiative-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.initiative-card p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.gallery-link {
+  display: inline-block;
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.gallery-link:hover {
+  color: #d94f00;
+}
+
+.gallery-link i {
+  margin-left: 5px;
+}
+
+
+/* మోడ్రన్ గ్రీన్ స్టైల్స్ */
+.initiatives-header h2 {
+  color: #1b5e20;
+  font-size: 2.5rem;
+}
+
+.title-underline {
+  height: 4px;
+  width: 60px;
+  background-color: #ffca28;
+  margin: 0 auto 30px auto;
+  border-radius: 2px;
+}
+
+.modern-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.modern-card {
+  border: none;
+  background: #ffffff;
+  border-bottom: 4px solid #1b5e20;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-radius: 10px;
+}
+
+.modern-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(27, 94, 32, 0.15);
+  border-bottom: 4px solid #ffca28;
+}
+
+.icon-wrapper {
+  color: #1b5e20;
+  background: #e8f5e9;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover .icon-wrapper {
+  background: #1b5e20;
+  color: #ffffff;
+}
+
+.modern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ఆటోమేటిక్ గా పైన 3, కింద 3 వస్తాయి */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Others Link Styling */
+.others-link-container {
+  max-width: 1200px;
+  margin: 25px auto 0 auto;
+  text-align: right; /* ఇది టెక్స్ట్ ని కచ్చితంగా రైట్ సైడ్ కి నెడుతుంది */
+  padding-right: 15px;
+}
+
+.others-text-link {
+  color: #1b5e20;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.others-text-link:hover {
+  color: #d94f00; /* మౌస్ పెట్టినప్పుడు ఆరెంజ్ కలర్ కి మారుతుంది */
+  transform: translateX(5px); /* చిన్నగా రైట్ కి మూవ్ అవుతుంది */
+}
+
+.others-text-link i {
+  font-size: 1rem;
+}

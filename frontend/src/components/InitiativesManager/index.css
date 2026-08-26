@@ -1,0 +1,88 @@
+.initiatives-manager {
+  width: 100%;
+}
+
+.manager-header h2 {
+  color: #1b5e20;
+  margin-bottom: 5px;
+}
+
+.manager-header p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.edit-category-card {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 25px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.edit-category-card:hover {
+  border-color: #1b5e20;
+  box-shadow: 0 8px 15px rgba(27, 94, 32, 0.1);
+  transform: translateY(-5px);
+}
+
+.edit-category-card i {
+  font-size: 2.5rem;
+  color: #1b5e20;
+  margin-bottom: 15px;
+}
+
+.edit-category-card h3 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.edit-btn {
+  background-color: #f1f8e9;
+  color: #1b5e20;
+  border: 1px solid #c5e1a5;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.edit-category-card:hover .edit-btn {
+  background-color: #1b5e20;
+  color: white;
+}
+
+.back-btn {
+  background-color: transparent;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #f5f5f5;
+  color: #1b5e20;
+  border-color: #1b5e20;
+}
+
+.form-header h2 {
+  color: #d94f00;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}

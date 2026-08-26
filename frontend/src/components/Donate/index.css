@@ -1,0 +1,69 @@
+.donate-section {
+  padding: 60px 20px;
+  background-color: #f4f7f6;
+  text-align: center;
+}
+
+.donate-header h2 {
+  font-size: 2.5rem;
+  color: #1b5e20; /* GVS Green Color */
+  margin-bottom: 10px;
+}
+
+.donate-header p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.donate-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.donate-card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+  border-top: 4px solid #d94f00;
+}
+
+.donate-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.details-text p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.upi-card {
+  text-align: center;
+}
+
+.qr-placeholder img {
+  width: 150px;
+  height: 150px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.upi-id {
+  font-size: 1.2rem;
+  color: #d94f00;
+}

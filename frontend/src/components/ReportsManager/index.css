@@ -1,0 +1,366 @@
+.reports-manager-container {
+  width: 100%;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
+}
+
+.admin-tab-btn {
+  background: white;
+  color: #555;
+  border: 1px solid #ddd;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-tab-btn:hover {
+  background: #f5f5f5;
+}
+
+.admin-tab-btn.active {
+  background: #1b5e20;
+  color: white;
+  border-color: #1b5e20;
+  box-shadow: 0 4px 10px rgba(27, 94, 32, 0.2);
+}
+
+.data-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+.data-card h3 {
+  color: #1b5e20;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ffca28;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px dashed #ccc;
+  font-style: italic;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 50px;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+/* 🔴 టేబుల్ స్టైల్స్ */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.admin-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.admin-data-table th, .admin-data-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-data-table th {
+  background-color: #f1f8e9;
+  color: #1b5e20;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.admin-data-table tr:hover {
+  background-color: #fafafa;
+}
+
+.village-badge {
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+
+/* 🔴 కొత్తగా యాడ్ చేసిన ఫిల్టర్ మరియు మంత్లీ రిపోర్ట్ స్టైల్స్ */
+
+.filter-section {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: inline-block;
+}
+
+.filter-section label {
+  font-weight: bold;
+  color: #1b5e20;
+  margin-right: 10px;
+}
+
+.village-select {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  outline: none;
+}
+
+.village-select:focus {
+  border-color: #1b5e20;
+}
+
+.month-picker label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.month-picker input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Edit & Action Buttons */
+.edit-input {
+  padding: 5px;
+  border: 1px solid #ffca28;
+  border-radius: 4px;
+  outline: none;
+  font-weight: bold;
+}
+
+.icon-btn {
+  border: none;
+  background: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-right: 10px;
+  transition: 0.2s;
+}
+
+.edit-btn { color: #1976d2; background: #e3f2fd; }
+.edit-btn:hover { background: #1976d2; color: white; }
+
+.delete-btn { color: #d32f2f; background: #ffebee; }
+.delete-btn:hover { background: #d32f2f; color: white; }
+
+.save-btn {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.save-btn:hover { background: #1b5e20; }
+
+.monthly-table th {
+  background-color: #ffe0b2 !important;
+  color: #d94f00 !important;
+}
+
+
+/* 🔴 BOOK STYLE TABLE (Based on your photo) */
+
+.mandal-report-section {
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.report-book-header {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 15px;
+}
+
+.report-book-header h4 {
+  font-size: 1.2rem;
+  color: #000;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.report-book-subhead {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.book-style-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #000;
+}
+
+.book-style-table th, .book-style-table td {
+  border: 1px solid #000;
+  padding: 8px 10px;
+  font-size: 1rem;
+}
+
+.book-style-table th {
+  background-color: #f5f5f5;
+  color: #000;
+  font-weight: bold;
+}
+
+.day-col {
+  text-align: center;
+  min-width: 30px;
+}
+
+.day-val {
+  text-align: center;
+  color: #555;
+}
+
+.row-total {
+  font-weight: bold;
+  text-align: center;
+  background-color: #fdf5e6;
+  color: #d94f00;
+  font-size: 1.1rem;
+}
+
+.book-style-table tfoot th {
+  background-color: #e0e0e0;
+  font-size: 1.1rem;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .mandal-report-section, .mandal-report-section * {
+    visibility: visible;
+  }
+  .mandal-report-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none;
+    padding: 0;
+  }
+}
+
+/* 🔴 Mobile View Fix for Staff Logout Button edge touching */
+@media screen and (max-width: 768px) {
+  .staff-nav {
+    padding-right: 20px !important; /* కుడి వైపున పక్కాగా గ్యాప్ ఇస్తుంది */
+  }
+  
+  .logout-btn {
+    margin-right: 5px !important; /* బటన్ ని అంచు నుండి లోపలికి జరుపుతుంది */
+  }
+}
+
+
+/* 🔴 Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  background: white;
+  color: #1b5e20;
+  border: 1px solid #1b5e20;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+  background: #e8f5e9;
+}
+
+.page-btn.active {
+  background: #1b5e20;
+  color: white;
+  border-color: #1b5e20;
+  box-shadow: 0 4px 8px rgba(27, 94, 32, 0.3);
+}
+
+
+/* 🔴 Pagination Styles (Updated for High Visibility) */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 15px 0;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  background: white;
+  color: #1b5e20;
+  border: 2px solid #1b5e20; /* 🔴 కొంచెం మందంగా ఇచ్చాం */
+  padding: 8px 16px; /* 🔴 బటన్ సైజు కొంచెం పెంచాం */
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+  background: #e8f5e9;
+  transform: translateY(-2px);
+}
+
+/* 🔴 సూపర్ హైలైట్ (Active Page) */
+.page-btn.active {
+  background: #d94f00 !important; /* 🔴 ఆరెంజ్ కలర్ */
+  color: white !important;
+  border-color: #d94f00 !important;
+  box-shadow: 0 5px 12px rgba(217, 79, 0, 0.4) !important;
+  transform: scale(1.15) !important; /* 🔴 యాక్టివ్ లో ఉన్న బటన్ కొంచెం ముందుకు (పెద్దదిగా) వస్తుంది */
+  z-index: 2;
+}

@@ -1,0 +1,141 @@
+.home-manager-container {
+  width: 100%;
+}
+
+.home-form {
+  margin-top: 20px;
+}
+
+.home-section-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  border: 1px solid #eee;
+}
+
+.home-section-card h3 {
+  color: #1b5e20;
+  border-bottom: 2px solid #ffca28;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+/* Stats Grid */
+.stats-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stats-inputs-grid .input-group input {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #d94f00;
+  text-align: center;
+}
+
+/* Carousel Grid */
+.carousel-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.preview-photo-card {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.preview-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delete-photo-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(211, 47, 47, 0.9);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.delete-photo-btn:hover {
+  background: #c62828;
+  transform: scale(1.1);
+}
+
+.upload-new-photo-card {
+  width: 100%;
+  height: 150px;
+  border: 2px dashed #1b5e20;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f1f8e9;
+  color: #1b5e20;
+  transition: all 0.3s;
+}
+
+.upload-new-photo-card:hover {
+  background-color: #e8f5e9;
+  transform: scale(1.02);
+}
+
+.upload-new-photo-card i {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.upload-new-photo-card span {
+  font-weight: bold;
+}
+
+/* Save Button */
+.save-action-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.save-home-btn {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(27, 94, 32, 0.3);
+  transition: all 0.3s ease;
+}
+
+.save-home-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(27, 94, 32, 0.5);
+}
+
+.save-home-btn:disabled {
+  background: #9e9e9e;
+  cursor: not-allowed;
+  box-shadow: none;
+}

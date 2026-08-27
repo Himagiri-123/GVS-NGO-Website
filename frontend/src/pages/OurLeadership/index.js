@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './index.css';
 import '../../components/TablePagination/index.css';
-import '../../components/TablePagination/index.css';
-import '../../components/TablePagination/index.css';
+import NO_PHOTO_PLACEHOLDER from '../../config/noPhotoPlaceholder';
 import API_URL from '../../config/api';
 import Spinner from '../../components/Spinner';
 
@@ -68,7 +67,7 @@ const OurLeadership = () => {
             {currentMembers.map((member) => (
               <div className="leadership-card" key={member._id}>
                 <div className="member-photo">
-                  <img src={member.photoUrl || 'https://via.placeholder.com/250x300?text=No+Photo'} alt={member.name} />
+                  <img src={member.photoUrl || NO_PHOTO_PLACEHOLDER} alt={member.name} />
                 </div>
                 <div className="member-info">
                   <h3>{member.name}</h3>

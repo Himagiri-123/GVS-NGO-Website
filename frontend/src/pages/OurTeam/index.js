@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
 import API_URL from '../../config/api';
+import NO_PHOTO_PLACEHOLDER from '../../config/noPhotoPlaceholder';
 
 const OurTeam = () => {
   const [team, setTeam] = useState([]);
@@ -47,7 +48,7 @@ const OurTeam = () => {
           {team.map((member) => (
             <div className="team-card" key={member._id}>
               <div className="member-photo">
-                <img src={member.photoUrl || 'https://via.placeholder.com/250x300?text=No+Photo'} alt={member.name} />
+                <img src={member.photoUrl || NO_PHOTO_PLACEHOLDER} alt={member.name} />
               </div>
               <div className="member-info">
                 <h3>{member.name}</h3>

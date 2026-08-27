@@ -262,14 +262,14 @@ const InitiativeDetails = () => {
   return (
     <div className="initiative-details-page">
       
-      <div className="top-icons-wrapper" style={{ position: 'relative', width: '100%', height: '50px', marginBottom: '20px' }}>
-        <div style={{ position: 'absolute', left: '0', top: '0', display: 'flex', gap: '15px' }}>
+      <div className="id-top-bar">
+        <div className="id-top-left-icons">
           <button onClick={() => navigate(-1)} className="icon-btn" title="Back"><i className="fas fa-arrow-left"></i></button>
           <Link to="/" className="icon-btn" title="Home"><i className="fas fa-home"></i></Link>
         </div>
         
         {slug === 'skill-development' && (
-          <div style={{ position: 'absolute', right: '0', top: '0' }}>
+          <div className="id-top-right-btn">
             <button className="kalam-apply-glass-btn" onClick={() => navigate('/apply-kalam-dreams')}>
               <i className="fas fa-laptop-code"></i> Apply for Computer Class
             </button>

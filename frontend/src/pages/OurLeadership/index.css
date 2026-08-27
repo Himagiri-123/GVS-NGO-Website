@@ -59,6 +59,17 @@
   margin-bottom: 30px;
 }
 
+/* Explicit column counts as a safety net, in case auto-fill doesn't kick in */
+@media (min-width: 640px) {
+  .leadership-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .leadership-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1150px) {
+  .leadership-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
 .leadership-card {
   background: #fff;
   border-radius: 12px;

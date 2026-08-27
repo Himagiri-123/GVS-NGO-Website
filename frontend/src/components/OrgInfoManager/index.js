@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import API_URL from '../../config/api';
+import NO_PHOTO_PLACEHOLDER from '../../config/noPhotoPlaceholder';
 
 const OrgInfoManager = () => {
   const [subTab, setSubTab] = useState('team'); // 'team' or 'contact'
@@ -186,7 +187,7 @@ const TeamMembersSection = () => {
             <tbody>
               {members.length > 0 ? members.map((m) => (
                 <tr key={m._id}>
-                  <td><img src={m.photoUrl || 'https://via.placeholder.com/50'} alt={m.name} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '50%' }} /></td>
+                  <td><img src={m.photoUrl || NO_PHOTO_PLACEHOLDER} alt={m.name} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '50%' }} /></td>
                   <td style={{ fontWeight: 'bold' }}>{m.name}</td>
                   <td>{m.role}</td>
                   <td>{m.order}</td>

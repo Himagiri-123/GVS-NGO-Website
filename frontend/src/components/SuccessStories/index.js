@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './index.css'; 
 import API_URL from '../../config/api';
+import NO_PHOTO_PLACEHOLDER from '../../config/noPhotoPlaceholder';
 
 const SuccessStories = () => {
   // Dummy data: shown when there's no data in admin yet
@@ -11,7 +12,7 @@ const SuccessStories = () => {
       village: "Ghanasara",
       achievement: "Secured IT Job at MNC",
       quote: "GVS Computer Center changed my life. The free computer training helped me develop skills and secure a job in the IT sector.",
-      image: "https://via.placeholder.com/150"
+      image: NO_PHOTO_PLACEHOLDER
     },
     {
       _id: "dummy2",
@@ -19,7 +20,7 @@ const SuccessStories = () => {
       village: "Kadumu",
       achievement: "Completed Higher Education",
       quote: "The VVK night study centers and nutrition food provided by GVS helped me focus on my studies without health issues.",
-      image: "https://via.placeholder.com/150"
+      image: NO_PHOTO_PLACEHOLDER
     },
     {
       _id: "dummy3",
@@ -27,7 +28,7 @@ const SuccessStories = () => {
       village: "Other Village",
       achievement: "Started Own Business",
       quote: "GVS guidance and support helped me become self-reliant. I started a small business and am now able to support my family.",
-      image: "https://via.placeholder.com/150"
+      image: NO_PHOTO_PLACEHOLDER
     },
     {
       _id: "dummy4",
@@ -35,7 +36,7 @@ const SuccessStories = () => {
       village: "Kadumu",
       achievement: "Got Government Job",
       quote: "The competitive exam coaching at VVK helped me clear the entrance. Now I have a government job. Thank you GVS.",
-      image: "https://via.placeholder.com/150"
+      image: NO_PHOTO_PLACEHOLDER
     }
   ];
 
@@ -113,7 +114,7 @@ const SuccessStories = () => {
           {stories.map((story, index) => (
             <div key={story._id || index} className={`story-card ${index === currentIndex ? 'active' : ''}`}>
               <div className="story-img-container">
-                <img src={story.image || "https://via.placeholder.com/150"} alt={story.name} />
+                <img src={story.image || NO_PHOTO_PLACEHOLDER} alt={story.name} />
               </div>
               
               <i className="fas fa-quote-left quote-icon"></i>

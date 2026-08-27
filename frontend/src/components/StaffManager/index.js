@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import NO_PHOTO_PLACEHOLDER from '../../config/noPhotoPlaceholder';
 import Swal from 'sweetalert2'; 
 import './index.css';
 import API_URL from '../../config/api';
@@ -347,7 +348,7 @@ const StaffManager = () => {
                                         <button onClick={() => handleDelete(staff._id)} className="delete-staff-btn"><i className="fas fa-trash-alt"></i></button>
                                       </div>
                                       <div className="staff-photo">
-                                        <img src={staff.photoUrl || 'https://via.placeholder.com/100'} alt={staff.name} />
+                                        <img src={staff.photoUrl || NO_PHOTO_PLACEHOLDER} alt={staff.name} />
                                       </div>
                                       <div className="staff-info">
                                         <h4>{staff.name}</h4>

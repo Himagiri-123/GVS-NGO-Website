@@ -357,6 +357,39 @@
   .number-pagination { gap: 8px; flex-wrap: wrap; }
 }
 
+/* Top bar: back/home on the left, "Apply" button on the right (desktop);
+   stacks into two centered rows on mobile so they never overlap. */
+.id-top-bar {
+  position: relative;
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.id-top-left-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.id-top-right-btn {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .id-top-bar {
+    justify-content: center;
+  }
+  .id-top-right-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* 🔴 Modern Glassmorphism Button Styles */
 .kalam-apply-glass-btn {
   background: rgba(255, 112, 67, 0.15); /* లేత ఆరెంజ్ గ్లాస్ కలర్ */

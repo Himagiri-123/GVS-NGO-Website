@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import QRCode from 'qrcode';
@@ -85,17 +85,25 @@ const ExperienceCertificate = () => {
   // Measure the available width and scale the (fixed-size) certificate sheet to
   // fit — this is what keeps everything correctly proportioned on mobile screens
   // instead of causing horizontal scrolling or overflow.
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!certOuterRef.current) return;
     const el = certOuterRef.current;
     const updateScale = () => {
-      const availableWidth = el.offsetWidth;
-      setScale(Math.min(availableWidth / BASE_WIDTH, 1));
+      const availableWidth = el.offsetWidth || el.getBoundingClientRect().width;
+      if (availableWidth > 0) {
+        setScale(Math.min(availableWidth / BASE_WIDTH, 1));
+      }
     };
     updateScale();
     const observer = new ResizeObserver(updateScale);
     observer.observe(el);
-    return () => observer.disconnect();
+    window.addEventListener('resize', updateScale);
+    window.addEventListener('orientationchange', updateScale);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateScale);
+      window.removeEventListener('orientationchange', updateScale);
+    };
   }, [myStaff]);
 
   useEffect(() => {
@@ -158,7 +166,7 @@ const ExperienceCertificate = () => {
       const res = await fetch(`${API_URL}/api/staff/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: loginPhone, password: loginPassword, category: wantedCategory })
+        body: JSON.stringify({ phone: loginPhone, password: loginPassword, category: wantedCategory, purpose: 'certificate' })
       });
       const data = await res.json();
       if (!res.ok) {

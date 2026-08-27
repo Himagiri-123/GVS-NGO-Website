@@ -560,9 +560,11 @@ const InitiativesManager = ({ forceCategory = null }) => {
               )}
 
               {initiativeData.sections?.map((section, sIndex) => (
-                <div key={sIndex} style={{ border: '2px solid #81c784', padding: '15px', borderRadius: '8px', marginBottom: '30px', position: 'relative' }}>
-                  <button type="button" onClick={() => handleDeleteSection(sIndex)} style={{ position: 'absolute', top: '10px', right: '10px', background: '#d32f2f', color: 'white', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem' }}><i className="fas fa-trash"></i> Delete Table</button>
-                  <h3 style={{ color: '#1b5e20', marginTop: 0 }}>{section.title} Settings</h3>
+                <div key={sIndex} style={{ border: '2px solid #81c784', padding: '15px', borderRadius: '8px', marginBottom: '30px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '10px' }}>
+                    <h3 style={{ color: '#1b5e20', margin: 0 }}>{section.title} Settings</h3>
+                    <button type="button" onClick={() => handleDeleteSection(sIndex)} style={{ background: '#d32f2f', color: 'white', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem', whiteSpace: 'nowrap', flexShrink: 0 }}><i className="fas fa-trash"></i> Delete Table</button>
+                  </div>
                   {section.table && renderTableEditor(`${section.title} Table`, section.table.headers, section.table.rows, (rIndex, colKey, val) => updateGenericRow(sIndex, rIndex, colKey, val), () => addGenericRow(sIndex), (rIndex) => deleteGenericRow(sIndex, rIndex), () => addGenericColumn(sIndex), (cIndex, old) => editGenericHeader(sIndex, cIndex, old))}
                   {renderGalleryEditor(`${section.title}`, section.photos, 'generic', sIndex)}
                 </div>

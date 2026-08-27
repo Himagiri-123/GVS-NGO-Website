@@ -177,21 +177,6 @@
   color: #1b5e20;
 }
 
-/* Mobile Responsiveness */
-@media screen and (max-width: 900px) {
-  .top-icons {
-    position: static;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  .exp-cert-btn-wrapper {
-    position: static;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-}
-
 .exp-cert-btn-wrapper {
   position: absolute;
   top: 30px;
@@ -210,6 +195,21 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 900px) {
+  .top-icons {
+    position: static;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .exp-cert-btn-wrapper {
+    position: static;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 }
 
 /* Village Group Styling */

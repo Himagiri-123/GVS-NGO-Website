@@ -133,9 +133,14 @@ const getMyCertificateData = async (req, res) => {
 };
 
 const staffLogin = async (req, res) => {
-  const { phone, password, category } = req.body;
+  const { phone, password, category, purpose } = req.body;
   try {
-    const staffList = await Staff.find({ phone, status: 'active' });
+    // Regular login (daily reports etc.) requires an active account.
+    // Viewing/downloading their OWN experience certificate should still work
+    // even if they've become inactive (e.g. left GVS) — that's often exactly
+    // when they need proof of their past experience the most.
+    const query = purpose === 'certificate' ? { phone } : { phone, status: 'active' };
+    const staffList = await Staff.find(query);
     let matches = staffList.filter(s => s.password === password);
 
     // Same person can have more than one staff record (different roles, same

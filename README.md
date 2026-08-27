@@ -47,14 +47,14 @@ cp .env.example .env   # then fill in your own values
 npm start
 ```
 
-Backend runs on `http://localhost:5000` by default.
+Backend runs on `https://gvs-ngo-website.onrender.com` by default.
 
 ### 2. Frontend
 
 ```bash
 cd frontend
 npm install
-cp .env.example .env   # REACT_APP_API_URL=http://localhost:5000
+cp .env.example .env   # REACT_APP_API_URL=https://gvs-ngo-website.onrender.com
 npm start
 ```
 

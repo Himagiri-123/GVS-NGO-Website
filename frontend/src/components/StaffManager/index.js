@@ -3,6 +3,7 @@ import NO_PHOTO_PLACEHOLDER from '../../config/noPhotoPlaceholder';
 import Swal from 'sweetalert2'; 
 import './index.css';
 import API_URL from '../../config/api';
+import { calculateExperience } from '../../config/calculateExperience';
 
 const StaffManager = () => {
   const [staffList, setStaffList] = useState([]);
@@ -237,8 +238,8 @@ const StaffManager = () => {
 
             <div className="input-row">
               <div className="input-group">
-                <label>Experience (Ex: 5 Years) *</label>
-                <input type="text" name="experience" value={formData.experience} onChange={handleChange} required />
+                <label>Experience (auto-calculated from Join Date below)</label>
+                <input type="text" value={formData.joinDate ? calculateExperience(formData.joinDate) : 'Enter Join Date below'} readOnly disabled style={{ background: '#f0f0f0', color: '#555', cursor: 'not-allowed' }} />
               </div>
               <div className="input-group">
                 <label>Phone Number (10 digits) *</label>
@@ -261,7 +262,8 @@ const StaffManager = () => {
             </div>
 
             <div className="input-group" style={{ marginTop: '15px', padding: '15px', backgroundColor: '#fff8e1', borderRadius: '8px', border: '1px solid #fdd835' }}>
-              <label style={{ fontWeight: 'bold', color: '#795548' }}><i className="fas fa-certificate"></i> Experience Certificate Details (Coordinator / VVK Instructor / Computer Teacher only)</label>
+              <label style={{ fontWeight: 'bold', color: '#795548' }}><i className="fas fa-certificate"></i> Join Date &amp; Experience Certificate Details</label>
+              <p style={{ fontSize: '0.8rem', color: '#795548', margin: '4px 0 0 0' }}>Join Date is used everywhere to auto-calculate "years of experience". Father's Name/District/State are only needed for Coordinator, VVK Instructor, and Computer Teacher (for their Experience Certificate).</p>
               <div className="input-row" style={{ marginTop: '10px' }}>
                 <div className="input-group">
                   <label>Father's Name</label>

@@ -5,4 +5,4 @@ Disallow: /admin-dashboard
 Disallow: /staff-login
 Disallow: /staff-dashboard
 
-Sitemap: https://YOUR-DOMAIN-HERE.com/sitemap.xml
+Sitemap: https://gvs-ngo-website.vercel.app/sitemap.xml

@@ -2,6 +2,7 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
+  overflow-x: hidden;
 }
 
 .exp-cert-topbar {
@@ -132,22 +133,27 @@
 
 .exp-verified-badge i { color: #2e7d32; }
 
-/* --- The certificate itself: landscape, bordered, watermarked --- */
+/* --- The certificate itself: landscape, bordered, watermarked ---
+   Fully fluid via CSS container queries (cqw units) — the certificate always
+   fills its container's width and every font-size scales with it, so it
+   never overflows on any screen size, with no JS measurement needed. */
 .exp-cert-outer {
   width: 100%;
-  overflow: hidden;
+  container-type: inline-size;
   padding: 10px 0;
 }
 
 .exp-cert-sheet {
   position: relative;
-  width: 1000px;
-  height: 667px;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  margin: 0;
   background: #fdf6ee;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   border: 6px solid #12233f;
-  padding: 10px;
+  padding: clamp(4px, 1cqw, 10px);
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .exp-cert-bg-photo {
@@ -164,7 +170,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 220px;
+  font-size: clamp(50px, 22cqw, 220px);
   font-weight: 900;
   color: rgba(27, 94, 32, 0.06);
   letter-spacing: 10px;
@@ -178,7 +184,7 @@
   z-index: 1;
   height: 100%;
   border: 2px solid #c8a45e;
-  padding: 25px 45px;
+  padding: clamp(8px, 2.5cqw, 25px) clamp(15px, 4.5cqw, 45px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -190,7 +196,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: clamp(7px, 1.2cqw, 12px);
   font-weight: bold;
   color: #b71c1c;
   font-family: Arial, sans-serif;
@@ -198,49 +204,49 @@
 
 .exp-cert-orgname {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 32px;
+  font-size: clamp(14px, 3.2cqw, 32px);
   font-weight: bold;
   color: #7a1f1f;
-  margin-top: 5px;
+  margin-top: clamp(2px, 0.5cqw, 5px);
 }
 
 .exp-cert-orgaddr {
-  font-size: 12px;
+  font-size: clamp(6px, 1.2cqw, 12px);
   color: #444;
-  max-width: 700px;
+  max-width: 82%;
 }
 
 .exp-cert-regd {
-  font-size: 12px;
+  font-size: clamp(6px, 1.2cqw, 12px);
   color: #444;
-  margin-bottom: 6px;
+  margin-bottom: clamp(2px, 0.6cqw, 6px);
 }
 
 .exp-cert-title {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 30px;
+  font-size: clamp(12px, 3cqw, 30px);
   font-weight: bold;
   color: #12233f;
   letter-spacing: 1px;
-  margin: 14px 0 18px 0;
+  margin: clamp(6px, 1.4cqw, 14px) 0 clamp(8px, 1.8cqw, 18px) 0;
 }
 
 .exp-cert-title span { color: #c8a45e; margin: 0 10px; }
 
 .exp-cert-body {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 15.5px;
-  line-height: 1.8;
+  font-size: clamp(7px, 1.55cqw, 15.5px);
+  line-height: 1.7;
   color: #222;
-  max-width: 820px;
+  max-width: 82%;
 }
 
 .exp-cert-details-grid {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-top: 16px;
-  font-size: 13px;
+  gap: clamp(15px, 4cqw, 40px);
+  margin-top: clamp(6px, 1.6cqw, 16px);
+  font-size: clamp(6px, 1.3cqw, 13px);
 }
 
 .exp-cert-details-grid > div {
@@ -257,13 +263,13 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 45px;
-  padding-top: 20px;
+  margin-top: auto;
+  padding-top: clamp(8px, 2cqw, 20px);
 }
 
 .exp-sign-img {
-  max-width: 110px;
-  max-height: 45px;
+  max-width: clamp(45px, 11cqw, 110px);
+  max-height: clamp(18px, 4.5cqw, 45px);
   object-fit: contain;
   display: block;
   margin: 0 auto 4px auto;
@@ -271,14 +277,14 @@
 
 .exp-sign-block {
   font-family: Georgia, serif;
-  font-size: 14px;
+  font-size: clamp(7px, 1.4cqw, 14px);
   font-weight: bold;
   color: #222;
   text-align: center;
 }
 
 .exp-sign-line {
-  width: 130px;
+  width: clamp(55px, 13cqw, 130px);
   border-bottom: 1px solid #444;
   margin-bottom: 6px;
 }
@@ -286,6 +292,7 @@
 .exp-sign-block small {
   font-weight: normal;
   color: #666;
+  font-size: clamp(4px, 0.85cqw, 8.5px);
 }
 
 .exp-qr-block {
@@ -293,8 +300,8 @@
 }
 
 .exp-qr-block img {
-  width: 75px;
-  height: 75px;
+  width: clamp(30px, 7.5cqw, 75px);
+  height: clamp(30px, 7.5cqw, 75px);
   background: #fff;
   padding: 2px;
   border-radius: 4px;
@@ -302,7 +309,7 @@
 
 .exp-qr-block small {
   display: block;
-  font-size: 9px;
+  font-size: clamp(4px, 0.9cqw, 9px);
   color: #333;
   margin-top: 2px;
 }
@@ -371,10 +378,4 @@
 .exp-login-actions button[type="button"] {
   background: #e0e0e0;
   color: #333;
-}
-
-@media (max-width: 768px) {
-  .exp-cert-body { font-size: 14px; }
-  .exp-cert-orgname { font-size: 24px; }
-  .exp-cert-title { font-size: 20px; }
 }

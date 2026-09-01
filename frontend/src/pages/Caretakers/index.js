@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../VvkInstructors/index.css'; 
 import API_URL from '../../config/api';
+import { calculateExperience } from '../../config/calculateExperience';
 
 const Caretakers = () => {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ const Caretakers = () => {
                       <span className="coord-role">{coord.role}</span>
                       {/* Displaying Qualification as Occupation here */}
                       <p className="coord-details" style={{ color: '#d94f00', fontWeight: 'bold' }}><i className="fas fa-user-tag"></i> {coord.qualification}</p> 
-                      <p className="coord-details"><i className="fas fa-briefcase"></i> {coord.experience}</p> 
+                      <p className="coord-details"><i className="fas fa-briefcase"></i> {coord.joinDate ? calculateExperience(coord.joinDate) : (coord.experience || 'N/A')}</p> 
                     </div>
                   </div>
                 ))}
@@ -103,7 +104,7 @@ const Caretakers = () => {
                             <p style={{ color: '#d94f00', fontWeight: 'bold', marginBottom: '8px', fontSize: '0.95rem' }}>
                               <i className="fas fa-user-tag"></i> {person.qualification}
                             </p>
-                            <p style={{ color: '#666', fontSize: '0.9rem' }}><i className="fas fa-briefcase"></i> {person.experience}</p>
+                            <p style={{ color: '#666', fontSize: '0.9rem' }}><i className="fas fa-briefcase"></i> {person.joinDate ? calculateExperience(person.joinDate) : (person.experience || 'N/A')}</p>
                           </div>
                         </div>
                       ))}

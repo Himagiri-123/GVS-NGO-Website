@@ -1,27 +1,12 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import QRCode from 'qrcode';
 import './index.css';
 import API_URL from '../../config/api';
+import { calculateExperience } from '../../config/calculateExperience';
 
-// Turns a "YYYY-MM-DD" join date into "X Years Y Months" of service as of today
-const calculateExperience = (joinDateStr) => {
-  if (!joinDateStr) return 'N/A';
-  const start = new Date(joinDateStr);
-  if (isNaN(start.getTime())) return 'N/A';
-  const now = new Date();
-
-  let years = now.getFullYear() - start.getFullYear();
-  let months = now.getMonth() - start.getMonth();
-  if (now.getDate() < start.getDate()) months -= 1;
-  if (months < 0) { years -= 1; months += 12; }
-  if (years <= 0 && months <= 0) return 'Less than a month';
-
-  const yearText = years > 0 ? `${years} Year${years > 1 ? 's' : ''}` : '';
-  const monthText = months > 0 ? `${months} Month${months > 1 ? 's' : ''}` : '';
-  return [yearText, monthText].filter(Boolean).join(' ');
-};
+// (calculateExperience is now imported from the shared utility above)
 
 const formatDate = (dateStr) => {
   if (!dateStr) return 'N/A';
@@ -57,11 +42,7 @@ const displayRole = (staff) => {
 
 const ExperienceCertificate = () => {
   const navigate = useNavigate();
-  const certOuterRef = useRef(null);
   const certRef = useRef(null);
-  const [scale, setScale] = useState(1);
-  const BASE_WIDTH = 1000;
-  const BASE_HEIGHT = 667; // 3:2 aspect ratio
 
   // Step 1: public verify — shows basic details + "Verified" badge, NOT the full certificate
   const [verifyName, setVerifyName] = useState('');
@@ -81,30 +62,6 @@ const ExperienceCertificate = () => {
   const [myStaff, setMyStaff] = useState(null); // full certificate data, only set after login
 
   const [qrDataUrl, setQrDataUrl] = useState('');
-
-  // Measure the available width and scale the (fixed-size) certificate sheet to
-  // fit — this is what keeps everything correctly proportioned on mobile screens
-  // instead of causing horizontal scrolling or overflow.
-  useLayoutEffect(() => {
-    if (!certOuterRef.current) return;
-    const el = certOuterRef.current;
-    const updateScale = () => {
-      const availableWidth = el.offsetWidth || el.getBoundingClientRect().width;
-      if (availableWidth > 0) {
-        setScale(Math.min(availableWidth / BASE_WIDTH, 1));
-      }
-    };
-    updateScale();
-    const observer = new ResizeObserver(updateScale);
-    observer.observe(el);
-    window.addEventListener('resize', updateScale);
-    window.addEventListener('orientationchange', updateScale);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('resize', updateScale);
-      window.removeEventListener('orientationchange', updateScale);
-    };
-  }, [myStaff]);
 
   useEffect(() => {
     if (myStaff?.experienceCertId) {
@@ -196,12 +153,17 @@ const ExperienceCertificate = () => {
   const handleDownload = () => {
     if (!certRef.current) return;
     const sheet = certRef.current;
-    const originalTransform = sheet.style.transform;
-    // Temporarily render at full size for the capture, then restore the on-screen scale
-    sheet.style.transform = 'none';
     import('html2canvas').then(({ default: html2canvas }) => {
-      html2canvas(sheet, { scale: 2, useCORS: true, backgroundColor: '#fdf6ee' }).then(canvas => {
-        sheet.style.transform = originalTransform;
+      // Force the capture to render as if the certificate were 1000px wide,
+      // regardless of its actual on-screen size — this keeps downloads at a
+      // consistent high resolution on every device, from small phones to desktops.
+      html2canvas(sheet, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#fdf6ee',
+        width: 1000,
+        windowWidth: 1000
+      }).then(canvas => {
         const link = document.createElement('a');
         link.download = `${myStaff.name}_GVS_Experience_Certificate.jpg`;
         link.href = canvas.toDataURL('image/jpeg', 0.95);
@@ -210,7 +172,6 @@ const ExperienceCertificate = () => {
         document.body.removeChild(link);
       });
     }).catch(() => {
-      sheet.style.transform = originalTransform;
       Swal.fire('Error', 'Could not generate the certificate image. Please try again.', 'error');
     });
   };
@@ -292,8 +253,8 @@ const ExperienceCertificate = () => {
             <i className="fas fa-check-circle"></i> Logged in as {myStaff.name}
           </div>
 
-          <div className="exp-cert-outer" ref={certOuterRef} style={{ height: BASE_HEIGHT * scale }}>
-            <div ref={certRef} className="exp-cert-sheet" style={{ transform: `scale(${scale})`, transformOrigin: 'top left' }}>
+          <div className="exp-cert-outer">
+            <div ref={certRef} className="exp-cert-sheet">
               <div className="exp-cert-bg-photo" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/ngo-building.jpg)` }}></div>
               <div className="exp-cert-watermark">GVS</div>
 
@@ -313,7 +274,7 @@ const ExperienceCertificate = () => {
 
                 <div className="exp-cert-body">
                   This is to certify that <strong>{myStaff.name}</strong>, S/o {myStaff.fatherName || 'N/A'},
-                  has been working with <strong>Grameena Vikas Sangham</strong> as a <strong>{displayRole(myStaff)}</strong>
+                  has been working with <strong>Grameena Vikas Sangham</strong> as a <strong>{displayRole(myStaff)}</strong>{' '}
                   since <strong>{formatDate(myStaff.joinDate)}</strong>, and has successfully completed
                   <strong> {calculateExperience(myStaff.joinDate)} </strong> of sincere and dedicated service, {responsibilityLine(myStaff.category)}.
                   During this period, <strong>{myStaff.name}</strong> has been posted at{' '}

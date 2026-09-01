@@ -9,7 +9,7 @@ const staffSchema = new mongoose.Schema({
   },
   role: { type: String, required: true }, 
   qualification: { type: String, required: true },
-  experience: { type: String, required: true },
+  experience: { type: String, required: false, default: '' }, // legacy manual field, kept for old records; new UI auto-calculates from joinDate instead
   mandal: { type: String },
   village: { type: String },
   phone: { type: String, required: true },

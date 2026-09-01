@@ -47,14 +47,14 @@ cp .env.example .env   # then fill in your own values
 npm start
 ```
 
-Backend runs on `https://gvs-ngo-website.onrender.com` by default.
+Backend runs on `http://localhost:5000` by default.
 
 ### 2. Frontend
 
 ```bash
 cd frontend
 npm install
-cp .env.example .env   # REACT_APP_API_URL=https://gvs-ngo-website.onrender.com
+cp .env.example .env   # REACT_APP_API_URL=http://localhost:5000
 npm start
 ```
 
@@ -76,10 +76,12 @@ See `backend/.env.example` and `frontend/.env.example` for the full list of requ
 ## Deployment
 
 - **Frontend:** deployed on Vercel
-- **Backend:** deployed on Render
+- **Backend:** deployed on Render — **live at https://gvs-ngo-website.onrender.com**
 - **Database:** MongoDB Atlas
 
-When deploying, set `REACT_APP_API_URL` on the frontend host to your live backend URL, and add all backend `.env` values as environment variables on Render.
+When deploying, set `REACT_APP_API_URL` on the frontend host (Vercel → Project → Settings → Environment Variables) to your live backend URL, and add all backend `.env` values as environment variables on Render.
+
+> **Note on Render's free tier:** the backend "sleeps" after ~15 minutes of no traffic. The first request after that can take 30-50 seconds to wake it up (later requests are fast). This is normal for Render's free tier, not a bug — a paid tier removes this delay if it ever becomes a problem.
 
 ## License
 

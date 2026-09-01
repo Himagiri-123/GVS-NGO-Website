@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './index.css';
 import API_URL from '../../config/api';
+import { calculateExperience } from '../../config/calculateExperience';
 
 const VvkInstructors = () => {
   const navigate = useNavigate();
@@ -43,18 +44,22 @@ const VvkInstructors = () => {
 
   return (
     <div className="team-page">
-      <div className="top-icons">
-        <button onClick={() => navigate(-1)} className="icon-btn"><i className="fas fa-arrow-left"></i></button>
-        <Link to="/" className="icon-btn"><i className="fas fa-home"></i></Link>
-      </div>
+      <div className="team-top-bar">
+        <div className="top-icons">
+          <button onClick={() => navigate(-1)} className="icon-btn"><i className="fas fa-arrow-left"></i></button>
+          <Link to="/" className="icon-btn"><i className="fas fa-home"></i></Link>
+        </div>
 
-      <div className="exp-cert-btn-wrapper">
-        <Link
-          to="/experience-certificate"
-          className="exp-cert-btn-link"
-        >
-          <i className="fas fa-certificate"></i> Experience Certificate
-        </Link>
+        <div className="exp-cert-btn-wrapper">
+          <Link
+            to="/experience-certificate"
+            className="exp-cert-btn-link"
+          >
+            <i className="fas fa-certificate"></i>{' '}
+            <span className="btn-full-text">Experience Certificate</span>
+            <span className="btn-short-text" style={{ display: 'none' }}>Certificate</span>
+          </Link>
+        </div>
       </div>
 
       <div className="team-header">
@@ -82,7 +87,7 @@ const VvkInstructors = () => {
                         <i className="fas fa-map-marker-alt"></i> {coord.mandal || 'GVS'} Mandal
                       </p>
                       <p className="coord-details"><i className="fas fa-graduation-cap"></i> {coord.qualification}</p> 
-                      <p className="coord-details"><i className="fas fa-briefcase"></i> {coord.experience}</p> 
+                      <p className="coord-details"><i className="fas fa-briefcase"></i> {coord.joinDate ? calculateExperience(coord.joinDate) : (coord.experience || 'N/A')}</p> 
                     </div>
                   </div>
                 ))}
@@ -112,7 +117,7 @@ const VvkInstructors = () => {
                         <i className="fas fa-map-marker-alt"></i> {faculty.village} Center
                       </p>
                       <p className="coord-details"><i className="fas fa-graduation-cap"></i> {faculty.qualification}</p> 
-                      <p className="coord-details"><i className="fas fa-briefcase"></i> {faculty.experience}</p> 
+                      <p className="coord-details"><i className="fas fa-briefcase"></i> {faculty.joinDate ? calculateExperience(faculty.joinDate) : (faculty.experience || 'N/A')}</p> 
                     </div>
                   </div>
                 ))}
@@ -142,7 +147,7 @@ const VvkInstructors = () => {
                             </p>
                             
                             <p><i className="fas fa-graduation-cap"></i> {person.qualification}</p>
-                            <p><i className="fas fa-briefcase"></i> {person.experience}</p>
+                            <p><i className="fas fa-briefcase"></i> {person.joinDate ? calculateExperience(person.joinDate) : (person.experience || 'N/A')}</p>
                           </div>
                         </div>
                       ))}

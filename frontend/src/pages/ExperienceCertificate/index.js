@@ -42,7 +42,10 @@ const displayRole = (staff) => {
 
 const ExperienceCertificate = () => {
   const navigate = useNavigate();
+  const certOuterRef = useRef(null);
   const certRef = useRef(null);
+  const [scale, setScale] = useState(1);
+  const BASE_WIDTH = 1000;
 
   // Step 1: public verify — shows basic details + "Verified" badge, NOT the full certificate
   const [verifyName, setVerifyName] = useState('');
@@ -62,6 +65,28 @@ const ExperienceCertificate = () => {
   const [myStaff, setMyStaff] = useState(null); // full certificate data, only set after login
 
   const [qrDataUrl, setQrDataUrl] = useState('');
+
+  // Only the WIDTH needs measuring — the outer wrapper's height comes purely
+  // from CSS `aspect-ratio: 3/2` (matching the sheet's fixed 1000x667 size),
+  // so there's no risk of measuring height before content has laid out.
+  useEffect(() => {
+    if (!certOuterRef.current) return;
+    const outer = certOuterRef.current;
+    const updateScale = () => {
+      const availableWidth = outer.offsetWidth;
+      if (availableWidth > 0) {
+        setScale(availableWidth / BASE_WIDTH);
+      }
+    };
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(outer);
+    window.addEventListener('resize', updateScale);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateScale);
+    };
+  }, [myStaff]);
 
   useEffect(() => {
     if (myStaff?.experienceCertId) {
@@ -153,17 +178,19 @@ const ExperienceCertificate = () => {
   const handleDownload = () => {
     if (!certRef.current) return;
     const sheet = certRef.current;
+    const originalTransform = sheet.style.transform;
+    // Render at true 1000x667 size for the capture (undo the on-screen scale-down),
+    // so the exported image exactly matches the certificate with no blank space.
+    sheet.style.transform = 'none';
     import('html2canvas').then(({ default: html2canvas }) => {
-      // Force the capture to render as if the certificate were 1000px wide,
-      // regardless of its actual on-screen size — this keeps downloads at a
-      // consistent high resolution on every device, from small phones to desktops.
       html2canvas(sheet, {
         scale: 2,
         useCORS: true,
         backgroundColor: '#fdf6ee',
         width: 1000,
-        windowWidth: 1000
+        height: 667
       }).then(canvas => {
+        sheet.style.transform = originalTransform;
         const link = document.createElement('a');
         link.download = `${myStaff.name}_GVS_Experience_Certificate.jpg`;
         link.href = canvas.toDataURL('image/jpeg', 0.95);
@@ -172,6 +199,7 @@ const ExperienceCertificate = () => {
         document.body.removeChild(link);
       });
     }).catch(() => {
+      sheet.style.transform = originalTransform;
       Swal.fire('Error', 'Could not generate the certificate image. Please try again.', 'error');
     });
   };
@@ -253,8 +281,8 @@ const ExperienceCertificate = () => {
             <i className="fas fa-check-circle"></i> Logged in as {myStaff.name}
           </div>
 
-          <div className="exp-cert-outer">
-            <div ref={certRef} className="exp-cert-sheet">
+          <div className="exp-cert-outer" ref={certOuterRef}>
+            <div ref={certRef} className="exp-cert-sheet" style={{ transform: `scale(${scale})` }}>
               <div className="exp-cert-bg-photo" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/ngo-building.jpg)` }}></div>
               <div className="exp-cert-watermark">GVS</div>
 

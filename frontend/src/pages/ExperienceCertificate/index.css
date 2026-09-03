@@ -171,6 +171,42 @@
   z-index: 0;
 }
 
+/* Faint NGO logo watermark, centered, so photocopies can be checked for authenticity */
+.exp-cert-logo-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  height: 260px;
+  object-fit: contain;
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Small NGO logo shown just above the org name */
+.exp-cert-logo {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  margin-bottom: 2px;
+}
+
+/* Candidate's passport-size photo, top-right corner, below the Issued date */
+.exp-cert-photo {
+  position: absolute;
+  top: 52px;
+  right: 30px;
+  width: 62px;
+  height: 78px;
+  object-fit: cover;
+  border: 2px solid #12233f;
+  background: #fff;
+  z-index: 2;
+}
+
 .exp-cert-watermark {
   position: absolute;
   top: 50%;
@@ -189,7 +225,9 @@
   position: relative;
   z-index: 1;
   height: 100%;
-  border: 2px solid #c8a45e;
+  border: 3px double #c8a45e;
+  outline: 1px solid #c8a45e;
+  outline-offset: -8px;
   padding: 25px 45px;
   box-sizing: border-box;
   display: flex;
@@ -250,15 +288,22 @@
 .exp-cert-details-grid {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  align-items: center;
+  gap: 25px;
   margin-top: 16px;
   font-size: 13px;
 }
 
-.exp-cert-details-grid > div {
+.exp-cert-details-grid > div:not(.exp-cert-divider) {
   display: flex;
   flex-direction: column;
   gap: 3px;
+}
+
+.exp-cert-divider {
+  width: 1px;
+  height: 28px;
+  background: #c8a45e;
 }
 
 .exp-cert-details-grid span { color: #777; }
@@ -271,6 +316,47 @@
   align-items: flex-end;
   margin-top: auto;
   padding-top: 20px;
+}
+
+/* Faint dashed circle reserved for the physical organization seal/stamp */
+.exp-seal-space {
+  width: 60px;
+  height: 60px;
+  border: 1.5px dashed #b0a08a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 8px;
+  color: #b0a08a;
+  line-height: 1.2;
+  margin: 0 auto 4px auto;
+}
+
+.exp-qr-url {
+  display: block;
+  font-size: 7px;
+  color: #666;
+  margin-top: 1px;
+}
+
+.exp-cert-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 6px;
+  border-top: 1px solid #e0d5c0;
+  font-size: 7.5px;
+  color: #888;
+  text-align: left;
+}
+
+.exp-cert-footer span:last-child {
+  text-align: right;
+  white-space: nowrap;
 }
 
 .exp-sign-img {

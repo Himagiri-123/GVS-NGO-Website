@@ -5,6 +5,7 @@ import QRCode from 'qrcode';
 import './index.css';
 import API_URL from '../../config/api';
 import { calculateExperience } from '../../config/calculateExperience';
+import NO_PHOTO_PLACEHOLDER from '../../config/noPhotoPlaceholder';
 
 // (calculateExperience is now imported from the shared utility above)
 
@@ -40,6 +41,19 @@ const displayRole = (staff) => {
   return staff.role || staff.category;
 };
 
+// Cleans up common qualification abbreviations so they look professional
+// on the certificate (e.g. "bsc" or "Bsc" -> "B.Sc").
+const formatQualification = (q) => {
+  if (!q) return 'N/A';
+  const known = {
+    'bsc': 'B.Sc', 'ba': 'B.A', 'bed': 'B.Ed', 'bcom': 'B.Com',
+    'ma': 'M.A', 'msc': 'M.Sc', 'mcom': 'M.Com', 'mba': 'MBA',
+    'inter': 'Intermediate', 'ssc': 'SSC', 'diploma': 'Diploma'
+  };
+  const key = q.toLowerCase().replace(/[.\s]/g, '');
+  return known[key] || q;
+};
+
 const ExperienceCertificate = () => {
   const navigate = useNavigate();
   const certOuterRef = useRef(null);
@@ -65,6 +79,7 @@ const ExperienceCertificate = () => {
   const [myStaff, setMyStaff] = useState(null); // full certificate data, only set after login
 
   const [qrDataUrl, setQrDataUrl] = useState('');
+  const [verifyUrlDisplay, setVerifyUrlDisplay] = useState('');
 
   // Only the WIDTH needs measuring — the outer wrapper's height comes purely
   // from CSS `aspect-ratio: 3/2` (matching the sheet's fixed 1000x667 size),
@@ -92,6 +107,7 @@ const ExperienceCertificate = () => {
     if (myStaff?.experienceCertId) {
       const verifyUrl = `${window.location.origin}/experience-certificate?name=${encodeURIComponent(myStaff.name)}&father=${encodeURIComponent(myStaff.fatherName)}`;
       QRCode.toDataURL(verifyUrl, { width: 300, margin: 1 }).then(setQrDataUrl).catch(() => setQrDataUrl(''));
+      setVerifyUrlDisplay(`${window.location.host}/experience-certificate`);
     }
   }, [myStaff]);
 
@@ -284,6 +300,7 @@ const ExperienceCertificate = () => {
           <div className="exp-cert-outer" ref={certOuterRef}>
             <div ref={certRef} className="exp-cert-sheet" style={{ transform: `scale(${scale})` }}>
               <div className="exp-cert-bg-photo" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/ngo-building.jpg)` }}></div>
+              <img className="exp-cert-logo-watermark" src="/images/logo.png" alt="" />
               <div className="exp-cert-watermark">GVS</div>
 
               <div className="exp-cert-border">
@@ -292,9 +309,17 @@ const ExperienceCertificate = () => {
                   <div>Issued: {formatDate(new Date().toISOString().slice(0, 10))}</div>
                 </div>
 
+                {/* Candidate photo — top-right, below the Issued date */}
+                <img
+                  className="exp-cert-photo"
+                  src={myStaff.photoUrl || NO_PHOTO_PLACEHOLDER}
+                  alt={myStaff.name}
+                />
+
+                <img className="exp-cert-logo" src="/images/logo.png" alt="GVS Logo" />
                 <div className="exp-cert-orgname">Grameena Vikas Sangham</div>
                 <div className="exp-cert-orgaddr">Vikasa Nilayam, Ghanasara Village, Bhamini Mandal, Parvathipuram Manyam Dist, Andhra Pradesh - 532455</div>
-                <div className="exp-cert-regd">Regd No 549 / 2008</div>
+                <div className="exp-cert-regd">Regd No 549 / 2008 &nbsp;|&nbsp; Staff ID: {myStaff.experienceCertId}</div>
 
                 <div className="exp-cert-title">
                   <span>❖</span> Certificate of Experience <span>❖</span>
@@ -303,7 +328,7 @@ const ExperienceCertificate = () => {
                 <div className="exp-cert-body">
                   This is to certify that <strong>{myStaff.name}</strong>, S/o {myStaff.fatherName || 'N/A'},
                   has been working with <strong>Grameena Vikas Sangham</strong> as a <strong>{displayRole(myStaff)}</strong>{' '}
-                  since <strong>{formatDate(myStaff.joinDate)}</strong>, and has successfully completed
+                  <strong>From: {formatDate(myStaff.joinDate)} &nbsp;To: Present</strong>, and has successfully completed
                   <strong> {calculateExperience(myStaff.joinDate)} </strong> of sincere and dedicated service, {responsibilityLine(myStaff.category)}.
                   During this period, <strong>{myStaff.name}</strong> has been posted at{' '}
                   <strong>{myStaff.village || 'N/A'} village, {myStaff.mandal || 'N/A'} mandal, {myStaff.district || 'Parvathipuram Manyam'} district, {myStaff.state || 'Andhra Pradesh'}</strong>,
@@ -312,7 +337,8 @@ const ExperienceCertificate = () => {
                 </div>
 
                 <div className="exp-cert-details-grid">
-                  <div><span>Qualification</span><strong>{myStaff.qualification || 'N/A'}</strong></div>
+                  <div><span>Qualification</span><strong>{formatQualification(myStaff.qualification)}</strong></div>
+                  <div className="exp-cert-divider"></div>
                   <div><span>Designation</span><strong>{displayRole(myStaff)}</strong></div>
                 </div>
 
@@ -327,14 +353,21 @@ const ExperienceCertificate = () => {
                     <div className="exp-qr-block">
                       <img src={qrDataUrl} alt="Scan to verify" />
                       <small>Scan &amp; Verify</small>
+                      <small className="exp-qr-url">{verifyUrlDisplay}</small>
                     </div>
                   )}
                   <div className="exp-sign-block">
+                    <div className="exp-seal-space" title="Space reserved for the official GVS seal">Official<br/>Seal</div>
                     <img src="/signatures/gudla-satyarao-sign.png" alt="Signature" className="exp-sign-img" />
                     <div className="exp-sign-line"></div>
                     <div>Gudla SatyaRao</div>
                     <small>President</small>
                   </div>
+                </div>
+
+                <div className="exp-cert-footer">
+                  <span>This is a system-generated certificate. Physical signature is not mandatory if electronically verified via the QR code.</span>
+                  <span>grameenavikassangamsrikakulam@gmail.com &nbsp;|&nbsp; gvs-ngo-website.vercel.app</span>
                 </div>
               </div>
             </div>

@@ -24,7 +24,8 @@ const staffSchema = new mongoose.Schema({
   joinDate: { type: String, default: '' }, // YYYY-MM-DD — used to auto-calculate years of service
   district: { type: String, default: 'Parvathipuram Manyam' },
   state: { type: String, default: 'Andhra Pradesh' },
-  experienceCertId: { type: String, default: '' } // e.g. GVS-EXP-000001, auto-generated
+  experienceCertId: { type: String, default: '' }, // e.g. GVS-EXP-000001, auto-generated
+  staffId: { type: String, default: '' } // e.g. GVS-STAFF-ID-001, auto-generated, separate from the certificate number
 }, { timestamps: true });
 
 module.exports = mongoose.model('Staff', staffSchema);

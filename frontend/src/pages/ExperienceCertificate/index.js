@@ -18,6 +18,27 @@ const formatDate = (dateStr) => {
   return `${day}-${month}-${d.getFullYear()}`;
 };
 
+// "06th July, 2018" style — used in the certificate paragraph for a more formal read
+const formatDateOrdinal = (dateStr) => {
+  if (!dateStr) return 'N/A';
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return dateStr;
+  const day = d.getDate();
+  const suffix = (day % 10 === 1 && day !== 11) ? 'st'
+    : (day % 10 === 2 && day !== 12) ? 'nd'
+    : (day % 10 === 3 && day !== 13) ? 'rd' : 'th';
+  const month = d.toLocaleDateString('en-GB', { month: 'long' });
+  return `${String(day).padStart(2, '0')}${suffix} ${month}, ${d.getFullYear()}`;
+};
+
+// "03 Sep, 2026" style — used for the "Issued on:" line at the top
+const formatDateShort = (dateStr) => {
+  if (!dateStr) return 'N/A';
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return dateStr;
+  return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+};
+
 // A short, role-based line describing what they actually do — fills the certificate
 // body with something meaningful instead of leaving empty space.
 const responsibilityLine = (category) => {
@@ -306,20 +327,23 @@ const ExperienceCertificate = () => {
               <div className="exp-cert-border">
                 <div className="exp-cert-topinfo">
                   <div>Certificate No: {myStaff.experienceCertId}</div>
-                  <div>Issued: {formatDate(new Date().toISOString().slice(0, 10))}</div>
+                  <div>Issued on: {formatDateShort(new Date().toISOString().slice(0, 10))}</div>
                 </div>
 
-                {/* Candidate photo — top-right, below the Issued date */}
-                <img
-                  className="exp-cert-photo"
-                  src={myStaff.photoUrl || NO_PHOTO_PLACEHOLDER}
-                  alt={myStaff.name}
-                />
+                {/* Candidate photo — top-right, below the Issued date, with Staff ID centered underneath */}
+                <div className="exp-cert-photo-block">
+                  <img
+                    className="exp-cert-photo"
+                    src={myStaff.photoUrl || NO_PHOTO_PLACEHOLDER}
+                    alt={myStaff.name}
+                  />
+                  <div className="exp-cert-staffid">ID: {myStaff.staffId || 'N/A'}</div>
+                </div>
 
                 <img className="exp-cert-logo" src="/images/logo.png" alt="GVS Logo" />
                 <div className="exp-cert-orgname">Grameena Vikas Sangham</div>
                 <div className="exp-cert-orgaddr">Vikasa Nilayam, Ghanasara Village, Bhamini Mandal, Parvathipuram Manyam Dist, Andhra Pradesh - 532455</div>
-                <div className="exp-cert-regd">Regd No 549 / 2008 &nbsp;|&nbsp; Staff ID: {myStaff.experienceCertId}</div>
+                <div className="exp-cert-regd">Regd No 549 / 2008</div>
 
                 <div className="exp-cert-title">
                   <span>❖</span> Certificate of Experience <span>❖</span>
@@ -328,7 +352,7 @@ const ExperienceCertificate = () => {
                 <div className="exp-cert-body">
                   This is to certify that <strong>{myStaff.name}</strong>, S/o {myStaff.fatherName || 'N/A'},
                   has been working with <strong>Grameena Vikas Sangham</strong> as a <strong>{displayRole(myStaff)}</strong>{' '}
-                  <strong>From: {formatDate(myStaff.joinDate)} &nbsp;To: Present</strong>, and has successfully completed
+                  <strong>from {formatDateOrdinal(myStaff.joinDate)} to Present</strong>, and has successfully completed
                   <strong> {calculateExperience(myStaff.joinDate)} </strong> of sincere and dedicated service, {responsibilityLine(myStaff.category)}.
                   During this period, <strong>{myStaff.name}</strong> has been posted at{' '}
                   <strong>{myStaff.village || 'N/A'} village, {myStaff.mandal || 'N/A'} mandal, {myStaff.district || 'Parvathipuram Manyam'} district, {myStaff.state || 'Andhra Pradesh'}</strong>,
@@ -336,10 +360,8 @@ const ExperienceCertificate = () => {
                   We place on record our appreciation for the valuable contribution made towards the organization's mission of rural development.
                 </div>
 
-                <div className="exp-cert-details-grid">
-                  <div><span>Qualification</span><strong>{formatQualification(myStaff.qualification)}</strong></div>
-                  <div className="exp-cert-divider"></div>
-                  <div><span>Designation</span><strong>{displayRole(myStaff)}</strong></div>
+                <div className="exp-cert-details-line">
+                  Qualification : <strong>{formatQualification(myStaff.qualification)}</strong> &nbsp;|&nbsp; Designation : <strong>{displayRole(myStaff)}</strong>
                 </div>
 
                 <div className="exp-cert-signatures">
@@ -357,7 +379,7 @@ const ExperienceCertificate = () => {
                     </div>
                   )}
                   <div className="exp-sign-block">
-                    <div className="exp-seal-space" title="Space reserved for the official GVS seal">Official<br/>Seal</div>
+                    <div className="exp-seal-space" title="Space reserved for the official GVS seal"></div>
                     <img src="/signatures/gudla-satyarao-sign.png" alt="Signature" className="exp-sign-img" />
                     <div className="exp-sign-line"></div>
                     <div>Gudla SatyaRao</div>

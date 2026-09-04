@@ -4,6 +4,18 @@ const jwt = require('jsonwebtoken');
 // Only these categories get an Experience Certificate
 const CERT_ELIGIBLE_CATEGORIES = ['Coordinator', 'VVK Instructor', 'Computer Teacher'];
 
+// Generates the next sequential ID for a given field/prefix, e.g. GVS-STAFF-ID-001
+const generateNextId = async (field, prefix, numDigits) => {
+  const regex = new RegExp(`^${prefix}`);
+  const last = await Staff.findOne({ [field]: { $regex: regex } }).sort({ createdAt: -1 });
+  let nextNum = 1;
+  if (last && last[field]) {
+    const numPart = last[field].replace(prefix, '');
+    if (!isNaN(parseInt(numPart, 10))) nextNum = parseInt(numPart, 10) + 1;
+  }
+  return `${prefix}${String(nextNum).padStart(numDigits, '0')}`;
+};
+
 const getStaff = async (req, res) => {
   try {
     const staff = await Staff.find().sort({ createdAt: -1 }); 
@@ -15,20 +27,12 @@ const getStaff = async (req, res) => {
 
 const addStaff = async (req, res) => {
   try {
+    // Every staff member gets their own Staff ID (separate from the certificate number)
+    req.body.staffId = await generateNextId('staffId', 'GVS-STAFF-ID-', 3);
+
     // Auto-generate the experience certificate ID for eligible categories
     if (CERT_ELIGIBLE_CATEGORIES.includes(req.body.category)) {
-      const lastStaff = await Staff.findOne({
-        experienceCertId: { $regex: /^GVS-EXP-/ }
-      }).sort({ createdAt: -1 });
-
-      let nextNum = 1;
-      if (lastStaff && lastStaff.experienceCertId) {
-        const parts = lastStaff.experienceCertId.split('-');
-        if (parts.length === 3) {
-          nextNum = parseInt(parts[2], 10) + 1;
-        }
-      }
-      req.body.experienceCertId = `GVS-EXP-${String(nextNum).padStart(6, '0')}`;
+      req.body.experienceCertId = await generateNextId('experienceCertId', 'GVS-EXP-', 6);
     }
 
     const staff = await Staff.create(req.body);
@@ -49,23 +53,16 @@ const deleteStaff = async (req, res) => {
 
 const updateStaff = async (req, res) => {
   try {
-    // If category was changed to an eligible one and there's no cert ID yet, generate one
-    if (CERT_ELIGIBLE_CATEGORIES.includes(req.body.category)) {
-      const existing = await Staff.findById(req.params.id);
-      if (existing && !existing.experienceCertId) {
-        const lastStaff = await Staff.findOne({
-          experienceCertId: { $regex: /^GVS-EXP-/ }
-        }).sort({ createdAt: -1 });
+    const existing = await Staff.findById(req.params.id);
 
-        let nextNum = 1;
-        if (lastStaff && lastStaff.experienceCertId) {
-          const parts = lastStaff.experienceCertId.split('-');
-          if (parts.length === 3) {
-            nextNum = parseInt(parts[2], 10) + 1;
-          }
-        }
-        req.body.experienceCertId = `GVS-EXP-${String(nextNum).padStart(6, '0')}`;
-      }
+    // Backfill a Staff ID for older records that don't have one yet
+    if (existing && !existing.staffId) {
+      req.body.staffId = await generateNextId('staffId', 'GVS-STAFF-ID-', 3);
+    }
+
+    // If category was changed to an eligible one and there's no cert ID yet, generate one
+    if (CERT_ELIGIBLE_CATEGORIES.includes(req.body.category) && existing && !existing.experienceCertId) {
+      req.body.experienceCertId = await generateNextId('experienceCertId', 'GVS-EXP-', 6);
     }
 
     const updatedStaff = await Staff.findByIdAndUpdate(req.params.id, req.body, { new: true });

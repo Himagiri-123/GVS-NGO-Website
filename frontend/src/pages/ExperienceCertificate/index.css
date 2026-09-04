@@ -160,6 +160,13 @@
   border: 6px solid #12233f;
   padding: 10px;
   box-sizing: border-box;
+  color-scheme: light only;
+  forced-color-adjust: none;
+}
+
+.exp-cert-sheet * {
+  color-scheme: light only;
+  forced-color-adjust: none;
 }
 
 .exp-cert-bg-photo {
@@ -220,7 +227,7 @@
   margin-top: 4px;
   font-size: 9px;
   font-weight: bold;
-  color: #12233f;
+  color: #12233f !important;
   font-family: Arial, sans-serif;
   white-space: nowrap;
 }
@@ -244,14 +251,23 @@
   z-index: 1;
   height: 100%;
   border: 3px double #c8a45e;
-  outline: 1px solid #c8a45e;
-  outline-offset: -8px;
   padding: 18px 45px 12px 45px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.exp-cert-border-inner-line {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px solid #c8a45e;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .exp-cert-topinfo {
@@ -268,7 +284,7 @@
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 32px;
   font-weight: bold;
-  color: #7a1f1f;
+  color: #7a1f1f !important;
   margin-top: 5px;
 }
 
@@ -288,7 +304,7 @@
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 30px;
   font-weight: bold;
-  color: #12233f;
+  color: #12233f !important;
   letter-spacing: 1px;
   margin: 10px 0 14px 0;
 }
@@ -299,10 +315,14 @@
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 15.5px;
   line-height: 1.7;
-  color: #222;
+  color: #222 !important;
   max-width: 96%;
   text-align: justify;
   text-align-last: center;
+}
+
+.exp-cert-body strong {
+  color: #12233f !important;
 }
 
 .exp-cert-details-line {
@@ -313,7 +333,7 @@
 }
 
 .exp-cert-details-line strong {
-  color: #12233f;
+  color: #12233f !important;
 }
 
 .exp-cert-signatures {
@@ -370,7 +390,7 @@
   font-family: Georgia, serif;
   font-size: 14px;
   font-weight: bold;
-  color: #222;
+  color: #222 !important;
   text-align: center;
 }
 

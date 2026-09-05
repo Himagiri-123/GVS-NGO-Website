@@ -219,7 +219,10 @@ const ExperienceCertificate = () => {
     // Render at true 1000x667 size for the capture (undo the on-screen scale-down),
     // so the exported image exactly matches the certificate with no blank space.
     sheet.style.transform = 'none';
-    import('html2canvas').then(({ default: html2canvas }) => {
+    // Wait for the PT Serif web font to finish loading first — otherwise the
+    // capture can happen too early and fall back to a different serif font.
+    const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    fontsReady.then(() => import('html2canvas')).then(({ default: html2canvas }) => {
       html2canvas(sheet, {
         scale: 2,
         useCORS: true,
@@ -325,6 +328,7 @@ const ExperienceCertificate = () => {
               <div className="exp-cert-watermark">GVS</div>
 
               <div className="exp-cert-border">
+                <div className="exp-cert-border-line2"></div>
                 <div className="exp-cert-border-inner-line"></div>
                 <div className="exp-cert-topinfo">
                   <div>Certificate No: {myStaff.experienceCertId}</div>
@@ -353,7 +357,7 @@ const ExperienceCertificate = () => {
                 <div className="exp-cert-body">
                   This is to certify that <strong>{myStaff.name}</strong>, S/o {myStaff.fatherName || 'N/A'},
                   has been working with <strong>Grameena Vikas Sangham</strong> as a <strong>{displayRole(myStaff)}</strong>{' '}
-                  <strong>from {formatDateOrdinal(myStaff.joinDate)} to Present</strong>, and has successfully completed
+                  <strong>from {formatDateOrdinal(myStaff.joinDate)}{myStaff.status === 'active' ? ' to Present' : ''}</strong>, and has successfully completed
                   <strong> {calculateExperience(myStaff.joinDate)} </strong> of sincere and dedicated service, {responsibilityLine(myStaff.category)}.
                   During this period, <strong>{myStaff.name}</strong> has been posted at{' '}
                   <strong>{myStaff.village || 'N/A'} village, {myStaff.mandal || 'N/A'} mandal, {myStaff.district || 'Parvathipuram Manyam'} district, {myStaff.state || 'Andhra Pradesh'}</strong>,

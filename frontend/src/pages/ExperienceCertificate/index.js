@@ -329,7 +329,6 @@ const ExperienceCertificate = () => {
 
               <div className="exp-cert-border">
                 <div className="exp-cert-border-line2"></div>
-                <div className="exp-cert-border-inner-line"></div>
                 <div className="exp-cert-topinfo">
                   <div>Certificate No: {myStaff.experienceCertId}</div>
                   <div>Issued on: {formatDateShort(new Date().toISOString().slice(0, 10))}</div>

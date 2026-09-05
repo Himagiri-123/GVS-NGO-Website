@@ -279,18 +279,6 @@
   z-index: 1;
 }
 
-/* Third line, set further in — the single line that sits at a visible distance */
-.exp-cert-border-inner-line {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  border: 2px solid #c8a45e;
-  pointer-events: none;
-  z-index: 1;
-}
-
 .exp-cert-topinfo {
   width: 100%;
   display: flex;

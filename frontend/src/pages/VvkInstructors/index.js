@@ -79,7 +79,7 @@ const VvkInstructors = () => {
               <div className="coordinators-grid">
                 {coordinators.map(coord => (
                   <div className="coord-card" key={coord._id}>
-                    {coord.photoUrl && <img src={coord.photoUrl} alt={coord.name} style={{ width: '80px', height: '80px', borderRadius: '50%', marginBottom: '10px', objectFit: 'cover' }} />}
+                    {coord.photoUrl && coord.showPhotoOnCert !== false && <img src={coord.photoUrl} alt={coord.name} style={{ width: '80px', height: '80px', borderRadius: '50%', marginBottom: '10px', objectFit: 'cover' }} />}
                     <div>
                       <h3>{coord.name}</h3>
                       <span className="coord-role">{coord.role}</span>
@@ -103,7 +103,7 @@ const VvkInstructors = () => {
               <div className="coordinators-grid">
                 {computerFaculty.map(faculty => (
                   <div className="coord-card" key={faculty._id} style={{ borderTop: '4px solid #10b981' }}>
-                    {faculty.photoUrl ? (
+                    {faculty.photoUrl && faculty.showPhotoOnCert !== false ? (
                       <img src={faculty.photoUrl} alt={faculty.name} style={{ width: '80px', height: '80px', borderRadius: '50%', marginBottom: '10px', objectFit: 'cover', border: '2px solid #34d399' }} />
                     ) : (
                       <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#d1fae5', margin: '0 auto 10px auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -137,7 +137,7 @@ const VvkInstructors = () => {
                       
                       {mandalData[mandal][village].map(person => (
                         <div className="team-card" key={person._id}>
-                          {person.photoUrl && <img src={person.photoUrl} alt={person.name} style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '8px 8px 0 0' }} />}
+                          {person.photoUrl && person.showPhotoOnCert !== false && <img src={person.photoUrl} alt={person.name} style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '8px 8px 0 0' }} />}
                           <div style={{ padding: '15px' }}>
                             <h4>{person.name}</h4>
                             

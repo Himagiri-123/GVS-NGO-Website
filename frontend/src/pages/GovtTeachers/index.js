@@ -73,7 +73,7 @@ const GovtTeachers = () => {
                 {coordinators.map(coord => (
                   <div className="coord-card" key={coord._id}>
                     <div className="coord-icon"><i className="fas fa-chalkboard-teacher"></i></div>
-                    {coord.photoUrl && <img src={coord.photoUrl} alt={coord.name} style={{ width: '80px', height: '80px', borderRadius: '50%', marginBottom: '10px', objectFit: 'cover' }} />}
+                    {coord.photoUrl && coord.showPhotoOnCert !== false && <img src={coord.photoUrl} alt={coord.name} style={{ width: '80px', height: '80px', borderRadius: '50%', marginBottom: '10px', objectFit: 'cover' }} />}
                     <div>
                       <h3>{coord.name}</h3>
                       <span className="coord-role">{coord.role}</span>
@@ -98,7 +98,7 @@ const GovtTeachers = () => {
                       
                       {mandalData[mandal][village].map(person => (
                         <div className="team-card" key={person._id}>
-                          {person.photoUrl && <img src={person.photoUrl} alt={person.name} style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '8px 8px 0 0' }} />}
+                          {person.photoUrl && person.showPhotoOnCert !== false && <img src={person.photoUrl} alt={person.name} style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '8px 8px 0 0' }} />}
                           <div style={{ padding: '15px' }}>
                             <h4>{person.name}</h4>
                             <p><i className="fas fa-graduation-cap"></i> {person.qualification}</p>

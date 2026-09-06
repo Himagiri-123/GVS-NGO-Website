@@ -199,7 +199,7 @@ const StaffManager = () => {
                     checked={formData.showPhotoOnCert}
                     onChange={(e) => setFormData({ ...formData, showPhotoOnCert: e.target.checked })}
                   />
-                  Show this photo on the Experience Certificate
+                  Show this photo on the public staff card (GVS Instructors page etc.)
                 </label>
               )}
             </div>

@@ -335,15 +335,14 @@ const ExperienceCertificate = () => {
                 </div>
 
                 {/* Candidate photo — top-right, below the Issued date, with Staff ID centered underneath.
-                    The photo itself is only shown if the admin has enabled it for this staff member. */}
+                    Always shown on the certificate itself (the show/hide toggle only affects the public
+                    staff cards on pages like GVS Instructors, not the certificate). */}
                 <div className="exp-cert-photo-block">
-                  {myStaff.showPhotoOnCert !== false && (
-                    <img
-                      className="exp-cert-photo"
-                      src={myStaff.photoUrl || NO_PHOTO_PLACEHOLDER}
-                      alt={myStaff.name}
-                    />
-                  )}
+                  <img
+                    className="exp-cert-photo"
+                    src={myStaff.photoUrl || NO_PHOTO_PLACEHOLDER}
+                    alt={myStaff.name}
+                  />
                   <div className="exp-cert-staffid">ID: {myStaff.staffId || 'N/A'}</div>
                 </div>
 

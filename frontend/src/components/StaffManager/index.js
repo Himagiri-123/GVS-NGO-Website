@@ -17,7 +17,8 @@ const StaffManager = () => {
   const [formData, setFormData] = useState({
     name: '', category: 'VVK Instructor', role: 'Instructor', qualification: '',
     experience: '', mandal: 'Bhamini', village: '', phone: '', status: 'active', photoUrl: '', password: '',
-    fatherName: '', joinDate: '', district: 'Parvathipuram Manyam', state: 'Andhra Pradesh'
+    fatherName: '', joinDate: '', district: 'Parvathipuram Manyam', state: 'Andhra Pradesh',
+    gender: 'Male', showPhotoOnCert: true
   });
 
   // Added the 'Computer Teacher' category
@@ -96,7 +97,7 @@ const StaffManager = () => {
       
       Swal.fire('Success!', editingId ? 'Staff member updated successfully!' : 'Staff member added successfully!', 'success'); 
       
-      setFormData({ name: '', category: 'VVK Instructor', role: 'Instructor', qualification: '', experience: '', mandal: 'Bhamini', village: '', phone: '', status: 'active', photoUrl: '', password: '', fatherName: '', joinDate: '', district: 'Parvathipuram Manyam', state: 'Andhra Pradesh' });
+      setFormData({ name: '', category: 'VVK Instructor', role: 'Instructor', qualification: '', experience: '', mandal: 'Bhamini', village: '', phone: '', status: 'active', photoUrl: '', password: '', fatherName: '', joinDate: '', district: 'Parvathipuram Manyam', state: 'Andhra Pradesh', gender: 'Male', showPhotoOnCert: true });
       setEditingId(null);
       fetchStaff();
     } catch (err) { setError(err.message); } 
@@ -112,7 +113,8 @@ const StaffManager = () => {
       phone: staff.phone, status: staff.status, photoUrl: staff.photoUrl || '',
       password: '',
       fatherName: staff.fatherName || '', joinDate: staff.joinDate || '',
-      district: staff.district || 'Parvathipuram Manyam', state: staff.state || 'Andhra Pradesh'
+      district: staff.district || 'Parvathipuram Manyam', state: staff.state || 'Andhra Pradesh',
+      gender: staff.gender || 'Male', showPhotoOnCert: staff.showPhotoOnCert !== false
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setSuccess(''); setError('');
@@ -120,7 +122,7 @@ const StaffManager = () => {
 
   const cancelEdit = () => {
     setEditingId(null);
-    setFormData({ name: '', category: 'VVK Instructor', role: 'Instructor', qualification: '', experience: '', mandal: 'Bhamini', village: '', phone: '', status: 'active', photoUrl: '', password: '', fatherName: '', joinDate: '', district: 'Parvathipuram Manyam', state: 'Andhra Pradesh' });
+    setFormData({ name: '', category: 'VVK Instructor', role: 'Instructor', qualification: '', experience: '', mandal: 'Bhamini', village: '', phone: '', status: 'active', photoUrl: '', password: '', fatherName: '', joinDate: '', district: 'Parvathipuram Manyam', state: 'Andhra Pradesh', gender: 'Male', showPhotoOnCert: true });
     setSuccess(''); setError('');
   };
 
@@ -188,6 +190,16 @@ const StaffManager = () => {
                   <i className="fas fa-cloud-upload-alt"></i>
                   <span>{uploading ? 'Uploading...' : 'Upload Photo'}</span>
                   <input type="file" accept="image/*" onChange={handlePhotoUpload} disabled={uploading} hidden />
+                </label>
+              )}
+              {formData.photoUrl && (
+                <label style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '8px', fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={formData.showPhotoOnCert}
+                    onChange={(e) => setFormData({ ...formData, showPhotoOnCert: e.target.checked })}
+                  />
+                  Show this photo on the Experience Certificate
                 </label>
               )}
             </div>
@@ -269,6 +281,15 @@ const StaffManager = () => {
                   <label>Father's Name</label>
                   <input type="text" name="fatherName" value={formData.fatherName} onChange={handleChange} placeholder="Ex: Golla Govindarao" />
                 </div>
+                <div className="input-group">
+                  <label>Gender (for S/o or D/o on the certificate)</label>
+                  <select name="gender" value={formData.gender} onChange={handleChange} className="custom-select">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div className="input-row" style={{ marginTop: '10px' }}>
                 <div className="input-group">
                   <label>Join Date (used to auto-calculate years of service)</label>
                   <input type="date" name="joinDate" value={formData.joinDate} onChange={handleChange} />

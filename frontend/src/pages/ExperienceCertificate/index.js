@@ -334,13 +334,16 @@ const ExperienceCertificate = () => {
                   <div>Issued on: {formatDateShort(new Date().toISOString().slice(0, 10))}</div>
                 </div>
 
-                {/* Candidate photo — top-right, below the Issued date, with Staff ID centered underneath */}
+                {/* Candidate photo — top-right, below the Issued date, with Staff ID centered underneath.
+                    The photo itself is only shown if the admin has enabled it for this staff member. */}
                 <div className="exp-cert-photo-block">
-                  <img
-                    className="exp-cert-photo"
-                    src={myStaff.photoUrl || NO_PHOTO_PLACEHOLDER}
-                    alt={myStaff.name}
-                  />
+                  {myStaff.showPhotoOnCert !== false && (
+                    <img
+                      className="exp-cert-photo"
+                      src={myStaff.photoUrl || NO_PHOTO_PLACEHOLDER}
+                      alt={myStaff.name}
+                    />
+                  )}
                   <div className="exp-cert-staffid">ID: {myStaff.staffId || 'N/A'}</div>
                 </div>
 
@@ -354,7 +357,7 @@ const ExperienceCertificate = () => {
                 </div>
 
                 <div className="exp-cert-body">
-                  This is to certify that <strong>{myStaff.name}</strong>, S/o {myStaff.fatherName || 'N/A'},
+                  This is to certify that <strong>{myStaff.name}</strong>, {myStaff.gender === 'Female' ? 'D/o' : 'S/o'} {myStaff.fatherName || 'N/A'},
                   has been working with <strong>Grameena Vikas Sangham</strong> as a <strong>{displayRole(myStaff)}</strong>{' '}
                   <strong>from {formatDateOrdinal(myStaff.joinDate)}{myStaff.status === 'active' ? ' to Present' : ''}</strong>, and has successfully completed
                   <strong> {calculateExperience(myStaff.joinDate)} </strong> of sincere and dedicated service, {responsibilityLine(myStaff.category)}.
